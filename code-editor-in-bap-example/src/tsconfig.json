@@ -1,0 +1,10 @@
+{
+	"extends": "../tsconfig",
+	"include": [
+		"./"
+	],
+	"compilerOptions": {
+		"outDir": "../target/javascript",
+		"rootDir": "./"
+	}
+}

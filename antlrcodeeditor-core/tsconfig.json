@@ -1,0 +1,10 @@
+{
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"exclude": ["./node_modules", "./lib"],
+	"compilerOptions": {
+		"outDir": "./lib",
+		"types": ["node"],
+		"allowJs": true,
+		"skipLibCheck": true // TODO: https://github.com/suren-atoyan/monaco-react/issues/695
+	}
+}

@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "christian-kohler.path-intellisense",
+    "editorconfig.editorconfig",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "msjsdiag.debugger-for-chrome",
+    "rbbit.typescript-hero",
+    "wayou.vscode-todo-highlight"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+	"header": {
+		"id": "appmodel",
+		"modelType": "application",
+		"modelVersion": "6.0.0",
+		"locales": [
+			{
+				"code": "en"
+			}
+		],
+		"modelReferences": []
+	},
+	"content": {
+		"region": {
+			"name": "APP",
+			"layout": {
+				"name": "ApplicationFrame"
+			},
+			"subRegions": [
+				{
+					"name": "CONTENT",
+					"layout": {
+						"name": "MasterDetail"
+					}
+				},
+				{
+					"name": "SIDEBAR",
+					"layout": {
+						"name": "Null"
+					}
+				},
+				{
+					"name": "MODAL",
+					"layout": {
+						"name": "Stack"
+					}
+				}
+			]
+		},
+		"defaultRegion": [
+			"CONTENT"
+		],
+		"modules": [
+			{
+				"name": "SampleCodeEditorForm",
+				"menu": {
+					"name": "sample_code_editor_form",
+					"label": [
+						{
+							"locale": "en",
+							"text": "Sample Code Editor Form"
+						},
+						{
+							"locale": "de",
+							"text": "Code Editor Form"
+						}
+					],
+					"initialActivity": {
+						"descriptor": {
+							"model": "sample_code_editor",
+							"instance": "SampleFormModel/1"
+						}
+					}
+				},
+				"flows": [
+					{
+						"name": "SampleCodeEditorFormFlow",
+						"scenes": [
+							{
+								"name": "SampleCodeEditorScene",
+								"matchConditions": [
+									{
+										"key": "model",
+										"mustEqual": "sample_code_editor"
+									},
+									{
+										"key": "instance",
+										"isSet": true
+									}
+								],
+								"sceneChange": {
+									"onEnter": [
+										{
+											"type": "VIEW_ADD",
+											"name": "CustomFormEngine",
+											"models": [
+												{
+													"modelType": "form",
+													"name": "sample.melies"
+												},
+												{
+													"modelType": "document",
+													"name": "sample.picus"
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

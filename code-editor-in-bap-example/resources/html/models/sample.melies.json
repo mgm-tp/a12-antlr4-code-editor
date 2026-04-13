@@ -1,0 +1,241 @@
+{
+  "header": {
+    "id": "sample.melies",
+    "modelType": "form",
+    "modelVersion": "37.3.0",
+    "locales": [
+      {
+        "code": "en"
+      },
+      {
+        "code": "de"
+      }
+    ],
+    "labels": [
+      {
+        "locale": "en",
+        "text": "Sample form"
+      },
+      {
+        "locale": "de",
+        "text": "Sample form"
+      }
+    ],
+    "modelReferences": [
+      {
+        "alias": "DM",
+        "modelType": "document",
+        "purpose": "data binding",
+        "reference": "sample.picus"
+      }
+    ]
+  },
+  "content": {
+    "subHeaderBox": {
+      "id": "subHeaderBox1"
+    },
+    "footerBox": {
+      "id": "footerBox1",
+      "majorButtons": {
+        "button": [
+          {
+            "type": "EVENT",
+            "id": "button-7b763",
+            "name": "Submit",
+            "buttonStyling": {
+              "label": {
+                "type": "Multilingual",
+                "multilingualText": {
+                  "text": [
+                    {
+                      "locale": "en",
+                      "text": "Submit"
+                    },
+                    {
+                      "locale": "de",
+                      "text": "einreichen"
+                    }
+                  ]
+                }
+              },
+              "priority": "PRIMARY"
+            },
+            "event": "submission",
+            "validation": "full",
+            "scope": "HIDDEN_IN_READONLY_MODE"
+          }
+        ]
+      }
+    },
+    "screens": [
+      {
+        "id": "screen1",
+        "name": "Screen1",
+        "screenElements": [
+          {
+            "type": "Section",
+            "id": "section-4e747",
+            "name": "CodeEditorSection",
+            "title": {
+              "type": "Multilingual",
+              "multilingualText": {
+                "text": [
+                  {
+                    "locale": "en",
+                    "text": "Code Editor"
+                  },
+                  {
+                    "locale": "de",
+                    "text": "Code-Editor"
+                  }
+                ]
+              }
+            },
+            "screenElements": [
+              {
+                "type": "ControlGrid",
+                "id": "controlgrid-80b40",
+                "name": "CodeEditor",
+                "layout": {
+                  "lg": "12"
+                },
+                "row": [
+                  {
+                    "type": "Row",
+                    "id": "row-2f15f",
+                    "cell": [
+                      {
+                        "type": "Control",
+                        "id": "control-ceeeb",
+                        "annotations": [
+                          {
+                            "name": "CodeEditor",
+                            "value": "example"
+                          }
+                        ],
+                        "offset": {
+                          "lg": 0
+                        },
+                        "label": {
+                          "type": "Multilingual",
+                          "multilingualText": {
+                            "text": [
+                              {
+                                "locale": "en",
+                                "text": "Code editor"
+                              },
+                              {
+                                "locale": "de",
+                                "text": "Code-Editor"
+                              }
+                            ]
+                          }
+                        },
+                        "elementRef": "field_f3103"
+                      }
+                    ]
+                  }
+                ],
+                "verticalAlignment": "BOTTOM"
+              }
+            ]
+          },
+          {
+            "type": "Section",
+            "id": "section-cb1b1",
+            "name": "NormalControlSection",
+            "title": {
+              "type": "Multilingual",
+              "multilingualText": {
+                "text": [
+                  {
+                    "locale": "en",
+                    "text": "Reference fields"
+                  },
+                  {
+                    "locale": "de",
+                    "text": "Referenzfelder"
+                  }
+                ]
+              }
+            },
+            "screenElements": [
+              {
+                "type": "ControlGrid",
+                "id": "controlgrid-13e3c",
+                "name": "controls",
+                "layout": {
+                  "lg": "12"
+                },
+                "row": [
+                  {
+                    "type": "Row",
+                    "id": "row-467af",
+                    "cell": [
+                      {
+                        "type": "Control",
+                        "id": "control-a673a",
+                        "offset": {
+                          "lg": 0
+                        },
+                        "label": {
+                          "type": "Multilingual",
+                          "multilingualText": {
+                            "text": [
+                              {
+                                "locale": "en",
+                                "text": "Field name"
+                              },
+                              {
+                                "locale": "de",
+                                "text": "Feldname"
+                              }
+                            ]
+                          }
+                        },
+                        "elementRef": "field_8dd4c"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Row",
+                    "id": "row-6a21d",
+                    "cell": [
+                      {
+                        "type": "Control",
+                        "id": "control-626af",
+                        "offset": {
+                          "lg": 0
+                        },
+                        "label": {
+                          "type": "Multilingual",
+                          "multilingualText": {
+                            "text": [
+                              {
+                                "locale": "en",
+                                "text": "Field description"
+                              },
+                              {
+                                "locale": "de",
+                                "text": "Feld Beschreibung"
+                              }
+                            ]
+                          }
+                        },
+                        "elementRef": "field_5143c"
+                      }
+                    ]
+                  }
+                ],
+                "verticalAlignment": "BOTTOM"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fieldConfiguration": {},
+    "groupConfiguration": {},
+    "defaults": {}
+  }
+}

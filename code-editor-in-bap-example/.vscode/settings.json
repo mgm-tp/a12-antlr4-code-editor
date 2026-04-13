@@ -1,0 +1,40 @@
+{
+  "[markdown]": {
+    "editor.quickSuggestions": false,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80
+  },
+  "cSpell.words": [
+    "checkstyle"
+  ],
+  "debug.node.autoAttach": "on",
+  "editor.parameterHints.enabled": true,
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "npm.runSilent": true,
+  "path-intellisense.extensionOnImport": false,
+  "todohighlight.include": [
+    "./src/**/*"
+  ],
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "tslint.configFile": "./tslint.json",
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.validate.enable": true,
+  "typescriptHero.imports.grouping": [
+    "Plains",
+    "Modules",
+    "/^@.*/",
+    "Workspace"
+  ],
+  "typescriptHero.imports.ignoredFromRemoval": [
+    "react"
+  ],
+  "typescriptHero.imports.insertSemicolons": true,
+  "typescriptHero.imports.insertSpaceBeforeAndAfterImportBraces": true,
+  "typescriptHero.imports.multiLineTrailingComma": false,
+  "typescriptHero.imports.multiLineWrapThreshold": 120,
+  "typescriptHero.imports.organizeOnSave": false,
+  "typescriptHero.imports.stringQuoteStyle": "\""
+}

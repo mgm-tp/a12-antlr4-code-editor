@@ -1,0 +1,62 @@
+{
+	"name": "antlr4-code-editor",
+	"private": true,
+	"workspaces": {
+		"packages": [
+			"antlrcodeeditor-build-tool",
+			"antlrcodeeditor-core",
+			"code-editor-in-bap-example"
+		]
+	},
+	"type": "module",
+	"scripts": {
+		"bootstrap": "yarn",
+		"clean": "lerna run clean",
+		"build": "lerna run build",
+		"compile": "lerna run compile",
+		"start": "run-s compile start:watch",
+		"start:watch": "lerna run start --stream --parallel",
+		"publish": "lerna publish --no-git-tag-version --no-push --no-git-reset --force-publish --yes",
+		"postinstall": "lerna run prepare-lib",
+		"test": "yarn lint",
+		"lint": "run-p lint:**",
+		"lint:eslint": "eslint .",
+		"lint:prettier": "prettier --check \"**/*.{js,ts,tsx}\"",
+		"upgrade-a12": "node ./upgrade-version-scripts/upgrade-a12.js",
+		"upgrade-a12-peers": "node ./upgrade-version-scripts/upgrade-a12.js --upgrade-peers",
+		"generateSBOM": "lerna run generateSBOM"
+	},
+	"devDependencies": {
+		"@com.mgmtp.a12.devtools/eslint-config": "3.1.0-rc.1",
+		"@com.mgmtp.a12.devtools/prettier-config": "1.1.0-rc.1",
+		"@cyclonedx/cyclonedx-npm": "^4.1.1",
+		"@types/eslint": "^9.6.1",
+		"eslint": "9.26.0",
+		"eslint-parser-plain": "^0.1.0",
+		"eslint-plugin-jsdoc": "62.9.0",
+		"eslint-plugin-lodash": "8.0.0",
+		"eslint-plugin-notice": "1.0.0",
+		"glob": "11.1.0",
+		"husky": "4.3.8",
+		"lerna": "6.6.2",
+		"lint-staged": "10.2.11",
+		"npm-run-all": "4.1.5",
+		"prettier": "3.5.3",
+		"typescript": "5.8.2"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{ts,tsx,js}": [
+			"prettier --write",
+			"eslint --fix"
+		]
+	},
+	"resolutions": {
+		"@types/react": "^19.0.0",
+		"string-width": "4.2.3"
+	}
+}

@@ -1,0 +1,80 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Lint",
+      "type": "npm",
+      "script": "tslint",
+      "group": "build",
+      "problemMatcher": {
+        "base": "$tslint5",
+        "owner": "tslint",
+        "applyTo": "allDocuments",
+        "fileLocation": "absolute"
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "Compile",
+      "type": "npm",
+      "script": "compile:typescript",
+      "group": "build",
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "presentation": {
+        "echo": false,
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "Watch: Compile",
+      "type": "process",
+      "command": "npm",
+      "args": [
+        "run",
+        "compile:typescript",
+        "--",
+        "--watch"
+      ],
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": [
+        "$tsc-watch"
+      ],
+      "presentation": {
+        "echo": false,
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "Test",
+      "type": "npm",
+      "script": "nyc",
+      "group": "test",
+      "presentation": {
+        "echo": false,
+        "focus": true,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Server",
+      "type": "npm",
+      "script": "start",
+      "group": "none",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    }
+  ]
+}

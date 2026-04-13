@@ -1,0 +1,6 @@
+{
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"compilerOptions": {
+		"allowJs": true
+	}
+}

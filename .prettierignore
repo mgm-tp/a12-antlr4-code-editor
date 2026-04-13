@@ -1,0 +1,12 @@
+# Don't lint node_modules
+node_modules
+
+# Don't lint build output
+**/target
+**/dist
+**/build
+**/gen
+**/.gradle
+**/lib
+**/src/config/grammar
+**/html/models

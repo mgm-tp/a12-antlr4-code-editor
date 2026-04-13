@@ -1,0 +1,11 @@
+{
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"exclude": ["./node_modules", "./target"],
+	"compilerOptions": {
+		"allowJs": true,
+		"outDir": "./target/javascript",
+		"typeRoots": ["./node_modules/@types", "../node_modules/@types", "./src/@types"],
+		"types": ["node", "webpack-env"],
+		"skipLibCheck": true // TODO: https://github.com/suren-atoyan/monaco-react/issues/695
+	}
+}

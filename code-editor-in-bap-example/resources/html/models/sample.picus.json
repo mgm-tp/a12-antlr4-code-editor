@@ -1,0 +1,217 @@
+{
+  "header": {
+    "id": "sample.picus",
+    "modelType": "document",
+    "modelVersion": "28.3.0",
+    "locales": [
+      {
+        "code": "en"
+      },
+      {
+        "code": "de"
+      }
+    ],
+    "labels": [],
+    "annotations": [],
+    "modelReferences": []
+  },
+  "content": {
+    "modelInfo": {
+      "name": "sample.picus",
+      "immutable": false,
+      "comment": "Sample form model including Code Editor "
+    },
+    "modelConfig": {
+      "decimalSeparator": ".",
+      "timeZone": "UTC",
+      "conditionLanguage": {
+        "code": "en_US"
+      }
+    },
+    "modelRoot": {
+      "rootGroups": [
+        {
+          "type": "Group",
+          "id": "group_ca6ec",
+          "name": "NormalControls",
+          "Group": {
+            "repeatability": 1,
+            "elements": [
+              {
+                "type": "Field",
+                "id": "field_8dd4c",
+                "name": "Name",
+                "Field": {
+                  "fieldType": {
+                    "type": "StringType",
+                    "StringType": {
+                      "minLength": 3,
+                      "maxLength": 50
+                    }
+                  },
+                  "label": [
+                    {
+                      "locale": "en",
+                      "text": ""
+                    },
+                    {
+                      "locale": "de",
+                      "text": ""
+                    }
+                  ],
+                  "requirednessConfig": {
+                    "mode": "absoluteOrRelativeToNextRepAncestor"
+                  }
+                }
+              },
+              {
+                "type": "Field",
+                "id": "field_5143c",
+                "name": "Description",
+                "Field": {
+                  "fieldType": {
+                    "type": "StringType",
+                    "StringType": {
+                      "minLength": 3,
+                      "maxLength": 50
+                    }
+                  },
+                  "label": [
+                    {
+                      "locale": "en",
+                      "text": ""
+                    },
+                    {
+                      "locale": "de",
+                      "text": ""
+                    }
+                  ],
+                  "requirednessConfig": {
+                    "mode": "absoluteOrRelativeToNextRepAncestor"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "Group",
+          "id": "group_635e5",
+          "name": "ControlWithCodeEditor",
+          "Group": {
+            "repeatability": 1,
+            "elements": [
+              {
+                "type": "Field",
+                "id": "field_f3103",
+                "name": "CodeEditor",
+                "Field": {
+                  "fieldType": {
+                    "type": "StringType",
+                    "StringType": {
+                      "lineBreaksPermitted": true
+                    }
+                  },
+                  "label": [
+                    {
+                      "locale": "en",
+                      "text": ""
+                    },
+                    {
+                      "locale": "de",
+                      "text": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "Rule",
+                "id": "rule_bba8e",
+                "name": "CodeEditorRule",
+                "Rule": {
+                  "errorEntityRelPath": "../CodeEditor",
+                  "errorCode": "Error rule_bba8e",
+                  "errorCondition": "FieldFilled(CodeEditor) and  CustomCondition CodeEditorCondition",
+                  "severity": "ERROR",
+                  "errorMessage": [
+                    {
+                      "locale": "en",
+                      "text": "Invalid code"
+                    },
+                    {
+                      "locale": "de",
+                      "text": "Ungültiger Code"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "Rule",
+                "id": "ruleimpl_0a12b",
+                "name": "CodeEditorAdditionRule",
+                "Rule": {
+                  "errorEntityRelPath": "../CodeEditor",
+                  "errorCode": "Error rule_157e6",
+                  "errorCondition": "FieldFilled(CodeEditor) and  CustomCondition ProjectConditionWarning",
+                  "severity": "WARNING",
+                  "errorMessage": [
+                    {
+                      "locale": "en",
+                      "text": "Additional rule condition warning message"
+                    },
+                    {
+                      "locale": "de",
+                      "text": "Zusätzliche Warnmeldung zur Regelbedingung"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "Rule",
+                "id": "rule_b29ed",
+                "name": "CodeEditorAdditionRule_Error",
+                "Rule": {
+                  "errorEntityRelPath": "../CodeEditor",
+                  "errorCode": "Error rule_157e6",
+                  "errorCondition": "FieldFilled(CodeEditor) and  CustomCondition ProjectConditionError",
+                  "severity": "ERROR",
+                  "errorMessage": [
+                    {
+                      "locale": "en",
+                      "text": "Additional rule condition error message"
+                    },
+                    {
+                      "locale": "de",
+                      "text": "Zusätzliche Regelbedingungsfehlermeldung"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "Rule",
+                "id": "rule_32bf7",
+                "name": "CodeEditorRule_Pending_Validation",
+                "Rule": {
+                  "errorEntityRelPath": "../CodeEditor",
+                  "errorCode": "Error rule_bba8e",
+                  "errorCondition": "FieldFilled(CodeEditor) and  CustomCondition CodeEditorPendingValidation",
+                  "severity": "WARNING",
+                  "errorMessage": [
+                    {
+                      "locale": "en",
+                      "text": "Pending validation job. Please wait!"
+                    },
+                    {
+                      "locale": "de",
+                      "text": "Ausstehender Validierungsjob. Warten Sie mal!"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

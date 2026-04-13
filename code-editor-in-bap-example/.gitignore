@@ -1,0 +1,14 @@
+/lib
+/target
+/node_modules
+/.nyc_output
+/platform-server.log*
+/build
+/dist
+
+/src/config/grammar
+
+/resources/html/css/index.css
+
+# Build information
+resources/**/info.json

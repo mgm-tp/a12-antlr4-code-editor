@@ -1,0 +1,7 @@
+{
+  "antlr-src": "resources/grammar",
+  "language": "example",
+  "lexer-name": "ScssLexer",
+  "parser-name": "ScssParser",
+  "target-dir": "src/config/grammar"
+}
