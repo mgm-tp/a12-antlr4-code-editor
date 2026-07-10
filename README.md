@@ -40,27 +40,27 @@ Please refer detailed documentations under:
 
 The following tools are required in order to build this repository:
 
-| Tool   | Version |
-|--------|--------:|
-| Gradle |   `8.x` |
-| JDK    |  `21.x` |
-| Node   |  `22.x` |
-| npm    |  `10.x` |
-| yarn   |   `1.x` |
+| Tool   |  Version |
+|--------|---------:|
+| Gradle |    `8.x` |
+| JDK    |   `21.x` |
+| Node   |   `22.x` |
+| npm    |   `10.x` |
+| pnpm   | `10.8.1` |
 
 #### How to Build
 
 Install all required libraries by running following commands in the root directory:
 
 ```sh
-npm i
-npm run bootstrap
+pnpm install
+pnpm bootstrap
 ```
 
 Build all packages:
 
 ```sh
-npm run build
+pnpm build
 ```
 
 This will execute the build in all packages, which includes:
@@ -73,7 +73,7 @@ This will execute the build in all packages, which includes:
 Start the project in development mode:
 
 ```sh
-npm start
+pnpm start
 ```
 
 This command starts the dev server and runs Typescript compiler in watch mode.
@@ -92,7 +92,7 @@ ESLint and Prettier are already configured to lint/format TypeScript code. For t
 Run linting:
 
 ```sh
-npm run lint
+pnpm lint
 ```
 
 ---

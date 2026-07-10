@@ -8,7 +8,7 @@
  * This source file is part of the mgm A12 Platform and available under
  * a choice of two different licenses:
  *
- * 1. Open-Source License – EUPL v1.2
+ * 1. Open-Source License - EUPL v1.2
  * You may redistribute and/or modify this file under the terms of the
  * European Union Public License, version 1.2 - see https://eupl.eu/.
  *
@@ -23,20 +23,18 @@
  *
  * Warranty Disclaimer (applies to either option)
  * ----------------------------------------------
- * THIS SOFTWARE IS PROVIDED “AS IS” AND WITHOUT WARRANTY OF ANY KIND,
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND,
  * WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import { ComponentType } from "react";
+import type { ComponentType, JSX } from "react";
 
-import { FrameFactories } from "@com.mgmtp.a12.client/client-core/lib/core/frame/index.js";
-import { View } from "@com.mgmtp.a12.client/client-core/lib/core/view/index.js";
 import { CRUDViews } from "@com.mgmtp.a12.crud/crud-core";
-import { IAntlrConfig, ISuggestion } from "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-core";
-import { ModuleRegistryProvider } from "@com.mgmtp.a12.client/client-core/lib/core/application/index.js";
+import { type IAntlrConfig, type ISuggestion } from "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-core";
+import { FrameFactories, ModuleRegistryProvider, type View } from "@com.mgmtp.a12.client/client-core";
 
 import { DefaultCustomFormEngineView } from "../modules/defaultCustomFormEngineView/DefaultCustomFormEngineView.js";
 import { ScssLexer, ScssParser, theme } from "../config/grammar/index.js";
@@ -46,7 +44,7 @@ export function createViewProvider(): View.Provider {
 	const enginesViewProvider = createEnginesViewProvider();
 
 	function chainedViewComponentProvider(componentName: string): ComponentType<View> {
-		return enginesViewProvider(componentName) || FrameFactories.viewProvider(componentName);
+		return enginesViewProvider(componentName) || FrameFactories.viewProvider(componentName) || Placeholder;
 	}
 
 	return ModuleRegistryProvider.getViewProvider(store.getState(), chainedViewComponentProvider);
@@ -78,4 +76,8 @@ function createEnginesViewProvider(): (componentName: string) => ComponentType<V
 	return name => {
 		return components[name];
 	};
+}
+
+function Placeholder(props: View): JSX.Element {
+	return <div>No view renderer found: `{props.name}`</div>;
 }

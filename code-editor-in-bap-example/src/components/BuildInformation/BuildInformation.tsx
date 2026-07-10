@@ -8,7 +8,7 @@
  * This source file is part of the mgm A12 Platform and available under
  * a choice of two different licenses:
  *
- * 1. Open-Source License – EUPL v1.2
+ * 1. Open-Source License - EUPL v1.2
  * You may redistribute and/or modify this file under the terms of the
  * European Union Public License, version 1.2 - see https://eupl.eu/.
  *
@@ -23,25 +23,27 @@
  *
  * Warranty Disclaimer (applies to either option)
  * ----------------------------------------------
- * THIS SOFTWARE IS PROVIDED “AS IS” AND WITHOUT WARRANTY OF ANY KIND,
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND,
  * WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import { Fragment, JSX, useEffect, useRef, useState } from "react";
+import { Fragment, type JSX, useEffect, useRef, useState } from "react";
 import gitLog from "gitlog";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime.js";
 
-import { TextOutput } from "@com.mgmtp.a12.widgets/widgets-core/lib/text-output/index.js";
-import { Typography } from "@com.mgmtp.a12.widgets/widgets-core/lib/typography/index.js";
-import { BulletList } from "@com.mgmtp.a12.widgets/widgets-core/lib/bullet-list/index.js";
-import { Icon } from "@com.mgmtp.a12.widgets/widgets-core/lib/icon/main/icon.view.js";
-import { addPrefix } from "@com.mgmtp.a12.widgets/widgets-core/lib/common/index.js";
-import { HeaderTrigger } from "@com.mgmtp.a12.widgets/widgets-core/lib/button/index.js";
-import { ConnectedToast } from "@com.mgmtp.a12.widgets/widgets-core/lib/toast/index.js";
+import {
+	TextOutput,
+	Typography,
+	BulletList,
+	Icon,
+	addPrefix,
+	HeaderTrigger,
+	ConnectedToast
+} from "@com.mgmtp.a12.widgets/widgets-core";
 
 import { useExceedBreakpoint } from "../../utils/use-screen-breakpoint.js";
 

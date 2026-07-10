@@ -8,7 +8,7 @@
  * This source file is part of the mgm A12 Platform and available under
  * a choice of two different licenses:
  *
- * 1. Open-Source License – EUPL v1.2
+ * 1. Open-Source License - EUPL v1.2
  * You may redistribute and/or modify this file under the terms of the
  * European Union Public License, version 1.2 - see https://eupl.eu/.
  *
@@ -23,7 +23,7 @@
  *
  * Warranty Disclaimer (applies to either option)
  * ----------------------------------------------
- * THIS SOFTWARE IS PROVIDED “AS IS” AND WITHOUT WARRANTY OF ANY KIND,
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND,
  * WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
@@ -31,7 +31,7 @@
  */
 
 import * as monacoEditor from "monaco-editor/esm/vs/editor/editor.api.js";
-import { MutableRefObject } from "react";
+import type { MutableRefObject } from "react";
 
 import { ValidationStatus, ValidationType } from "../types/ValidationState.js";
 import { ValidationError } from "../errors/ValidationError.js";
@@ -39,9 +39,9 @@ import { ValidationError } from "../errors/ValidationError.js";
 import { CommonTokensProvider } from "./CommonTokensProvider.js";
 import { setValidationState } from "./EditorValidationState.js";
 
-import IStandaloneCodeEditor = monacoEditor.editor.IStandaloneCodeEditor;
-import IMarkerData = monaco.editor.IMarkerData;
-import IMarker = monaco.editor.IMarker;
+type IStandaloneCodeEditor = monacoEditor.editor.IStandaloneCodeEditor;
+type IMarkerData = monaco.editor.IMarkerData;
+type IMarker = monaco.editor.IMarker;
 
 /**
  * Function for validating the code and marking the errors in the code editor if any. The validation use the Antlr grammar

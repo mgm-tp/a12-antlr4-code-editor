@@ -1,5 +1,5 @@
 {
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "version": "6.2.2"
+	"npmClient": "pnpm",
+	"version": "7.0.0",
+	"packages": ["antlrcodeeditor-build-tool", "antlrcodeeditor-core", "code-editor-in-bap-example"]
 }

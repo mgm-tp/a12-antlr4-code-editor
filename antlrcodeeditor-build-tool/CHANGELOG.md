@@ -1,4 +1,9 @@
 # Changelog
+
+## [7.0.0 / 2026-04-28]
+### Changed
+* Migrate from `ts-node` to `tsx` for running theming task
+
 ## [6.2.1 / 2026-04-13]
 ### Changed
 * OpenSource clean up

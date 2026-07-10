@@ -1,12 +1,13 @@
 {
 	"name": "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-core",
-	"version": "6.2.2",
+	"version": "7.0.0",
 	"description": "A12 Antlr Code Editor Core",
 	"author": "mgm technology partners",
 	"license": "(EUPL-1.2 OR LicenseRef-commercial)",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
 	"type": "module",
+	"exports": "./lib/index.js",
 	"files": [
 		"lib",
 		"stylus",
@@ -21,21 +22,24 @@
 	],
 	"scripts": {
 		"build": "run-s clean compile",
-		"build:prod": "cross-env NODE_ENV=prod npm run build",
+		"build:prod": "cross-env NODE_ENV=prod pnpm run build",
 		"clean": "rimraf --glob ./lib ./target ./*.tgz",
 		"compile": "npm-run-all --aggregate-output --continue-on-error --parallel compile:**",
-		"compile:typescript": "npm run typescript -- --project ./src",
+		"compile:typescript": "pnpm run typescript --project ./src",
+		"test": "run-p test:**",
+		"test:api": "api-extractor run",
+		"update:api": "api-extractor run --local",
 		"prepare-lib": "run-s prepare-lib:**",
-		"prepare-lib:gen": "node scripts/prepare-monaco-declaration.js ../node_modules",
-		"prepare-lib:correct": "node scripts/correct-antlr-type-import.js ../node_modules",
+		"prepare-lib:gen": "node scripts/prepare-monaco-declaration.js ./node_modules",
+		"prepare-lib:correct": "node scripts/correct-antlr-type-import.js ./node_modules",
 		"prepare-lib:lint": "eslint src/internal/types/monaco.ts --ext .d.ts --quiet --fix --no-ignore",
 		"prepare-lib:prettier": "prettier --check src/internal/types/monaco.ts --write",
 		"start": "run-s typescript:watch",
 		"typescript": "tsc",
-		"typescript:watch": "npm run typescript -- --project ./src --watch",
-		"prepack": "npm run build:prod",
+		"typescript:watch": "pnpm run typescript --project ./src --watch",
+		"prepack": "pnpm run build:prod",
 		"release": "npm publish",
-		"generateSBOM": "cyclonedx-npm --ignore-npm-errors --output-file cyclonedx.json"
+		"generateSBOM": "cyclonedx-pnpm --ignore-npm-errors --output-file cyclonedx.json"
 	},
 	"dependencies": {
 		"@monaco-editor/react": "4.7.0",
@@ -44,21 +48,22 @@
 		"fs-extra": "8.1.0"
 	},
 	"devDependencies": {
-		"@com.mgmtp.a12.devtools/tsconfig": "1.1.0",
+		"@com.mgmtp.a12.devtools/tsconfig": "2.0.0",
+		"@microsoft/api-extractor": "7.58.2",
 		"@monaco-editor/react": "4.7.0",
 		"@types/node": "22.13.9",
-		"@types/react": "19.2.14",
+		"@types/react": "19.2.8",
 		"@types/react-dom": "19.0.4",
 		"clsx": "1.2.1",
 		"cross-env": "6.0.3",
 		"glob": "11.1.0",
-		"monaco-editor": "npm:monaco-editor-core@0.50.0",
+		"monaco-editor": "0.50.0",
 		"npm-run-all": "4.1.5",
-		"react": "19.0.0",
-		"react-dom": "19.0.0",
+		"react": "19.2.4",
+		"react-dom": "19.2.4",
 		"rimraf": "6.0.1",
 		"ts-morph": "19.0.0",
-		"typescript": "5.8.2"
+		"typescript": "6.0.2"
 	},
 	"peerDependencies": {
 		"monaco-editor": "0.50.0"

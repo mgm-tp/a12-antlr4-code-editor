@@ -1,0 +1,84 @@
+{
+	"$schema": "./node_modules/@microsoft/api-extractor/lib/schemas/api-extractor.schema.json",
+	"projectFolder": ".",
+	"mainEntryPointFilePath": "./lib/index.d.ts",
+	"bundledPackages": [],
+	"newlineKind": "lf",
+	"compiler": {
+		"tsconfigFilePath": "./src/tsconfig.json",
+		"overrideTsconfig": {
+			"compilerOptions": {
+				"allowJs": true,
+				"declaration": true,
+				"declarationMap": true,
+				"esModuleInterop": true,
+				"forceConsistentCasingInFileNames": true,
+				"isolatedModules": true,
+				"jsx": "react-jsx",
+				"lib": ["DOM", "ES2024"],
+				"module": "NodeNext",
+				"moduleDetection": "force",
+				"moduleResolution": "NodeNext",
+				"newLine": "LF",
+				"noEmitOnError": true,
+				"noErrorTruncation": true,
+				"noFallthroughCasesInSwitch": true,
+				"noImplicitReturns": true,
+				"noUnusedLocals": true,
+				"noUnusedParameters": false,
+				"outDir": "./lib",
+				"preserveConstEnums": true,
+				"resolveJsonModule": true,
+				"skipLibCheck": true,
+				"sourceMap": true,
+				"stripInternal": true,
+				"target": "ES2024",
+				"types": ["node"],
+				"verbatimModuleSyntax": true
+			},
+			"exclude": ["./node_modules", "./lib"],
+			"include": ["./src/"]
+		}
+	},
+	"apiReport": {
+		"enabled": true,
+		"reportFolder": ".",
+		"reportFileName": "index",
+		"reportTempFolder": "./target/api"
+	},
+	"tsdocMetadata": {
+		"enabled": false
+	},
+	"dtsRollup": {
+		"enabled": false
+	},
+	"docModel": {
+		"enabled": false
+	},
+	"messages": {
+		"compilerMessageReporting": {
+			"TS2411": {
+				"logLevel": "none"
+			}
+		},
+		"extractorMessageReporting": {
+			"default": {
+				"logLevel": "error"
+			},
+			"ae-missing-release-tag": {
+				"logLevel": "none"
+			},
+			"ae-unresolved-link": {
+				"logLevel": "none"
+			},
+			"ae-wrong-input-file-type": {
+				"logLevel": "none"
+			}
+		},
+		"tsdocMessageReporting": {
+			"default": {
+				"logLevel": "none"
+			}
+		}
+	}
+}

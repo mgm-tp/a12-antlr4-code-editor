@@ -30,6 +30,7 @@ yarn-error.log*
 # IDE
 .idea/**
 dist
+target
 
 # this directory is generated from ANTLR plugin of IntelIJ
 **/gen

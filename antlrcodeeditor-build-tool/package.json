@@ -1,6 +1,6 @@
 {
 	"name": "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-build-tool",
-	"version": "6.2.2",
+	"version": "7.0.0",
 	"description": "Antlr Code Editor Build Tool for generating Lexer and Parser file and theming file",
 	"author": "mgm technology partners",
 	"license": "(EUPL-1.2 OR LicenseRef-commercial)",
@@ -20,16 +20,19 @@
 	},
 	"scripts": {
 		"clean": "rimraf --glob ./gen ./target ./*.tgz",
-		"theming": "node --loader ts-node/esm ./src/theming.ts",
-		"generateSBOM": "cyclonedx-npm --ignore-npm-errors --output-file cyclonedx.json"
+		"theming": "tsx ./src/theming.ts",
+		"generateSBOM": "cyclonedx-pnpm --ignore-npm-errors --output-file cyclonedx.json"
 	},
 	"type": "module",
 	"dependencies": {
-		"@com.mgmtp.a12.devtools/tsconfig": "1.1.0",
 		"antlr4": "4.13.2",
 		"prepend-file": "2.0.1",
 		"rimraf": "6.0.1",
-		"ts-node": "10.9.2",
+		"tsx": "4.21.0",
 		"yargs": "15.3.1"
+	},
+	"devDependencies": {
+		"@com.mgmtp.a12.devtools/tsconfig": "2.0.0",
+		"@types/node": "22.13.9"
 	}
 }
