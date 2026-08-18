@@ -1,21 +1,21 @@
 {
 	"versions": {
-		"@com.mgmtp.a12.utils": "7.2.0-rc.1",
-		"@com.mgmtp.a12.base": "29.3.0-rc.1",
-		"@com.mgmtp.a12.widgets": "38.2.1-rc.1",
-		"@com.mgmtp.a12.kernel": "30.8.0-rc.1",
-		"@com.mgmtp.a12.dataservices": "38.4.0-rc.1",
-		"@com.mgmtp.a12.formengine": "38.4.0-rc.1",
-		"@com.mgmtp.a12.client": "16.2.1-rc.1",
-		"@com.mgmtp.a12.overviewengine": " 38.3.0-rc.1",
-		"@com.mgmtp.a12.expression": "2.0.6-rc.1",
-		"@com.mgmtp.a12.crud": "2.3.0-rc.1"
+		"@com.mgmtp.a12.utils": "7.2.0",
+		"@com.mgmtp.a12.base": "29.3.0",
+		"@com.mgmtp.a12.kernel": "30.8.1",
+		"@com.mgmtp.a12.widgets": "38.3.4",
+		"@com.mgmtp.a12.expression": "2.0.6",
+		"@com.mgmtp.a12.dataservices": "38.4.0",
+		"@com.mgmtp.a12.client": "16.2.1",
+		"@com.mgmtp.a12.overviewengine": " 38.3.0",
+		"@com.mgmtp.a12.formengine": "38.4.0",
+		"@com.mgmtp.a12.crud": "2.3.0"
 	},
 	"exceptions": {
 		"@com.mgmtp.a12.devtools/prettier-config": "1.1.0",
 		"@com.mgmtp.a12.devtools/eslint-config": "3.1.0",
-		"@com.mgmtp.a12.utils/utils-connector": "8.2.0-rc.1",
-		"@com.mgmtp.a12.utils/utils-collections": "6.2.0-rc.1",
-		"@com.mgmtp.a12.utils/utils-logging": "6.2.0-rc.1"
+		"@com.mgmtp.a12.utils/utils-connector": "8.2.2",
+		"@com.mgmtp.a12.utils/utils-collections": "6.2.0",
+		"@com.mgmtp.a12.utils/utils-logging": "6.2.0"
 	}
 }

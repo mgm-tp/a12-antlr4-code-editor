@@ -9,6 +9,8 @@
 		]
 	},
 	"type": "module",
+	"author": "mgm technology partners",
+	"license": "(EUPL-1.2 OR LicenseRef-commercial)",
 	"scripts": {
 		"bootstrap": "yarn",
 		"clean": "lerna run clean",
@@ -27,8 +29,8 @@
 		"generateSBOM": "lerna run generateSBOM"
 	},
 	"devDependencies": {
-		"@com.mgmtp.a12.devtools/eslint-config": "3.1.0-rc.1",
-		"@com.mgmtp.a12.devtools/prettier-config": "1.1.0-rc.1",
+		"@com.mgmtp.a12.devtools/eslint-config": "3.1.0",
+		"@com.mgmtp.a12.devtools/prettier-config": "1.1.0",
 		"@cyclonedx/cyclonedx-npm": "^4.1.1",
 		"@types/eslint": "^9.6.1",
 		"eslint": "9.26.0",
