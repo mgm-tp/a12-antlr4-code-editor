@@ -5,11 +5,59 @@ packages:
 
 loglevel: info
 overrides:
-    '@types/react': 19.2.8
-    'react': 19.2.4
-    '@types/node': "22.13.9"
-    '@types/react-virtualized': 9.21.29
-    'string-width': 4.2.3
+  '@types/react': 19.2.8
+  'react': 19.2.6
+  '@types/node': "22.13.9"
+  '@types/react-virtualized': 9.21.29
+  'string-width': 4.2.3
+  # security fixes for outdated transitive deps (see security scan findings)
+  'tar': 7.5.21
+  'postcss': 8.5.23
+  'brace-expansion@1': 1.1.18
+  'brace-expansion@2': 2.1.4
+  'brace-expansion@5': 5.0.9
+  'js-yaml@3': 3.15.1
+  'js-yaml@4': 4.3.1
+  'ajv@6': 6.15.0
+  '@eslint/eslintrc>ajv': 6.15.0
+  'eslint>ajv': 6.15.0
+  'ajv@8': 8.18.0
+  'ajv-formats-draft2019>ajv': 8.18.0
+  'qs': 6.14.2
+  'fast-uri': 3.1.5
+  'websocket-driver': 0.7.5
+  'shell-quote': 1.9.0
+  'body-parser': 1.20.6
+  'http-proxy-middleware': 2.0.10
+  'path-to-regexp': 0.1.13
+  'dompurify': 3.4.12
+  'linkify-it': 5.0.2
+  'axios': 1.18.0
+  'undici@6': 6.28.0
+  'ip-address@10': 10.3.1
+
+# ensure dependency build scripts (e.g. postinstall) are either ignored or approved
+strictDepBuilds: true
 
 patchedDependencies:
-    react-dnd@16.0.1: patches/react-dnd@16.0.1.patch
+  react-dnd@16.0.1: patches/react-dnd@16.0.1.patch
+
+# Only install package versions published at least this many minutes ago (7 day)
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - "@com.mgmtp.a12.*"
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
+# Trust-downgrade checks stop applying after a version has been public this long (30 days).
+# Long-stable versions won't fail on stale/missing provenance metadata.
+# https://github.com/pnpm/pnpm/issues/10202
+trustPolicyIgnoreAfter: 43200
+
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
+  core-js-pure: true
+  esbuild: true
+  husky: true
+  libxmljs2: true
+  nx: true

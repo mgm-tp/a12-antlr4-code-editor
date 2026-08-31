@@ -1,7 +1,7 @@
 THIRD_PARTY_NOTICES
 
 Component: A12 Antlr Code Editor
-Generated: 2026-04-28 for mgm A12 Platform 2026.06
+Generated: 2026-08-14 for mgm A12 Platform 2026.06-ext1
 
 The mgm A12 Platform is developed by mgm technology partners GmbH.
 
@@ -16,50 +16,37 @@ Component Overview
 
 The following third-party components are included in this distribution:
 
-
-- antlr4 4.13.2, licensed under BSD-3-Clause
-	Copyright (c) 2012-2022 The ANTLR Project
-	Source: https://github.com/antlr/antlr4
-- autoprefixer 9.8.6, licensed under MIT
-	Copyright 2013 Andrey Sitnik <andrey@sitnik.ru>
-	Source: https://github.com/postcss/autoprefixer
-- @babel/core 7.22.1, licensed under MIT
+- @babel/core 7.29.7, licensed under MIT
 	Copyright (c) 2014-present Sebastian McKenzie and other contributors
 	Source: https://github.com/babel/babel
-- babel-loader 9.1.2, licensed under MIT
-	Copyright (c) 2014-2019 Luis Couto <hello@luiscouto.pt>
-	Source: https://github.com/babel/babel-loader
-- babel-plugin-styled-components 2.1.4, licensed under MIT
-	Copyright (c) 2016-present Vladimir Danchenkov and Maximilian Stoiber
-	Source: https://github.com/styled-components/babel-plugin-styled-components
 - @babel/plugin-syntax-import-attributes 7.26.0, licensed under MIT
 	Copyright (c) 2014-present Sebastian McKenzie and other contributors
 	Source: https://github.com/babel/babel
-- @babel/preset-env 7.22.4, licensed under MIT
+- @babel/preset-env 7.29.7, licensed under MIT
 	Copyright (c) 2014-present Sebastian McKenzie and other contributors
 	Source: https://github.com/babel/babel
-- @babel/preset-react 7.22.3, licensed under MIT
+- @babel/preset-react 7.29.7, licensed under MIT
 	Copyright (c) 2014-present Sebastian McKenzie and other contributors
 	Source: https://github.com/babel/babel
-- @babel/preset-typescript 7.21.5, licensed under MIT
+- @babel/preset-typescript 7.29.7, licensed under MIT
 	Copyright (c) 2014-present Sebastian McKenzie and other contributors
 	Source: https://github.com/babel/babel
-- clsx 1.2.1, licensed under MIT
-	Copyright (c) Luke Edwards <luke.edwards05@gmail.com> (lukeed.com)
-	Source: https://github.com/lukeed/clsx
-- @com.mgmtp.a12.base/base-model-api 30.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.base/base-model-api 30.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
 - @com.mgmtp.a12.client/client-core 17.0.0, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
+- @com.mgmtp.a12.client/typescript-fsa-redux-5-compat 1.0.2, licensed under EUPL v1.2
+	Copyright (C) 2012-2026 mgm technology partners GmbH
+	Source: https://github.com/mgm-tp
 - @com.mgmtp.a12.crud/crud-core 3.0.0, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.dataservices/dataservices-access 39.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.dataservices/dataservices-access 39.0.2, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.devtools/cyclonedx-pnpm 0.5.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.devtools/cyclonedx-pnpm 0.5.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
 - @com.mgmtp.a12.devtools/eslint-config 3.1.1, licensed under EUPL v1.2
@@ -77,33 +64,78 @@ The following third-party components are included in this distribution:
 - @com.mgmtp.a12.formengine/formengine-core 39.0.0, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.kernel/kernel-core-runtime-api-ts 31.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.kernel/kernel-core-runtime-api-ts 31.1.0, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.kernel/kernel-md-facade 31.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.kernel/kernel-md-facade 31.1.0, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.overviewengine/overviewengine-core 39.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.overviewengine/overviewengine-core 39.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.utils/utils-collections 7.0.0-build.1209, licensed under EUPL v1.2
+- @com.mgmtp.a12.utils/utils-collections 7.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.utils/utils-connector 9.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.utils/utils-connector 9.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.utils/utils-localization 8.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.utils/utils-localization 8.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.utils/utils-localization-react 8.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.utils/utils-localization-react 8.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.utils/utils-logging 7.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.utils/utils-logging 7.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.widgets/widgets-core 39.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.widgets/widgets-core 39.0.2, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
+- @microsoft/api-extractor 7.58.2, licensed under MIT
+	Copyright (c) Microsoft Corporation
+	Source: https://github.com/microsoft/rushstack/tree/main/apps/api-extractor
+- @monaco-editor/react 4.7.0, licensed under MIT
+	Copyright (c) 2018 Suren Atoyan
+	Source: https://github.com/suren-atoyan/monaco-react
+- @pmmmwh/react-refresh-webpack-plugin 0.6.2, licensed under MIT
+	Copyright (c) 2019 Michael Mok
+	Source: https://github.com/pmmmwh/react-refresh-webpack-plugin
+- @types/eslint 9.6.1, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/linkify-it 3.0.2, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/node 22.13.9, licensed under MIT
+	Copyright Node.js contributors
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/react 19.2.8, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file.
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/react-dom 19.0.4, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/react-dom 19.2.3, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @types/webpack-env 1.18.1, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file
+	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
+- @welldone-software/why-did-you-render 4.2.7, licensed under MIT
+	Copyright (c) 2018-present, Vitali Zaidman <vzaidman@gmail.com>
+	Source: https://github.com/welldone-software/why-did-you-render
+- antlr4 4.13.2, licensed under BSD-3-Clause
+	Copyright (c) 2012-2022 The ANTLR Project
+	Source: https://github.com/antlr/antlr4
+- autoprefixer 10.5.4, licensed under MIT
+	Copyright 2013 Andrey Sitnik <andrey@sitnik.ru>
+	Source: https://github.com/postcss/autoprefixer
+- babel-loader 9.1.2, licensed under MIT
+	Copyright (c) 2014-2019 Luis Couto <hello@luiscouto.pt>
+	Source: https://github.com/babel/babel-loader
+- babel-plugin-styled-components 2.1.4, licensed under MIT
+	Copyright (c) 2016-present Vladimir Danchenkov and Maximilian Stoiber
+	Source: https://github.com/styled-components/babel-plugin-styled-components
 - copy-webpack-plugin 14.0.0, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack-contrib/copy-webpack-plugin
@@ -113,13 +145,13 @@ The following third-party components are included in this distribution:
 - cross-env 6.0.3, licensed under MIT
 	Copyright (c) 2017 Kent C. Dodds
 	Source: https://github.com/kentcdodds/cross-env
-- css-loader 4.3.0, licensed under MIT
+- css-loader 6.11.0, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack-contrib/css-loader
 - dayjs 1.11.13, licensed under MIT
 	Copyright (c) 2018-present, iamkun
 	Source: https://github.com/iamkun/dayjs
-- eslint 9.33.0, licensed under MIT
+- eslint 9.39.5, licensed under MIT
 	Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
 	Source: https://github.com/eslint/eslint
 - eslint-parser-plain 0.1.1, licensed under MIT
@@ -127,7 +159,7 @@ The following third-party components are included in this distribution:
 	Source: https://github.com/so1ve/eslint-parser-plain
 - eslint-plugin-jsdoc 62.9.0, licensed under BSD-3-Clause
 	Copyright (c) 2018, Gajus Kuizinas (http://gajus.com/)
-	Source: eslint-plugin-jsdoc
+	Source: https://github.com/gajus/eslint-plugin-jsdoc
 - eslint-plugin-lodash 8.0.0, licensed under MIT
 	Copyright (c) 2017 Ido
 	Source: https://github.com/idok/eslint-plugin-lodash
@@ -143,27 +175,20 @@ The following third-party components are included in this distribution:
 - gitlog 5.1.0, licensed under BSD-3-Clause
 	Copyright (c) 2016, Dominic Harrington
 	Source: https://github.com/domharrington/node-gitlog
-- glob 11.1.0, licensed under ISC
-	Copyright (c) 2009-2023 Isaac Z. Schlueter and Contributors
+- glob 13.0.6, licensed under BlueOak-1.0.0
 	Source: https://github.com/isaacs/node-glob
-- html-webpack-plugin 5.5.0, licensed under MIT
+- html-webpack-plugin 5.6.8, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/jantimon/html-webpack-plugin
 - husky 4.3.8, licensed under MIT
 	Copyright (c) 2017
 	Source: https://github.com/typicode/husky
-- lerna 7.1.5, licensed under MIT
-	Copyright (c) 2015-present Lerna
+- lerna 9.0.7, licensed under MIT
+	Copyright (c) 2015-present Lerna Contributors
 	Source: https://github.com/lerna/lerna
 - lint-staged 10.2.11, licensed under MIT
 	Copyright (c) 2016 Andrey Okonetchnikov
 	Source: https://github.com/okonet/lint-staged
-- @microsoft/api-extractor 7.58.2, licensed under MIT
-	Copyright (c) Microsoft Corporation. All rights reserved.
-	Source: https://github.com/microsoft/rushstack
-- mkdirp 0.5.1, licensed under MIT
-	Copyright (c) 2011-2023 James Halliday (mail@substack.net) and Isaac Z. Schlueter (i@izs.me)
-	Source: https://github.com/isaacs/node-mkdirp
 - moment 2.29.4, licensed under MIT
 	Copyright (c) JS Foundation and other contributors
 	Source: https://github.com/moment/moment
@@ -173,60 +198,54 @@ The following third-party components are included in this distribution:
 - monaco-editor 0.50.0, licensed under MIT
 	Copyright (c) 2016 - present Microsoft Corporation
 	Source: https://github.com/microsoft/monaco-editor
-- @monaco-editor/react 4.7.0, licensed under MIT
-	Copyright (c) 2018 Suren Atoyan
-	Source: https://github.com/suren-atoyan/monaco-react
-- npm-run-all 4.1.5, licensed under MIT
+- npm-run-all2 9.0.2, licensed under MIT
 	Copyright (c) 2015 Toru Nagashima
-	Source: https://github.com/mysticatea/npm-run-all
-- @pmmmwh/react-refresh-webpack-plugin 0.5.10, licensed under MIT
-	Copyright (c) 2019 Michael Mok
-	Source: https://github.com/pmmmwh/react-refresh-webpack-plugin
-- postcss-loader 4.3.0, licensed under MIT
+	Source: https://github.com/bcomnes/npm-run-all2
+- postcss-loader 6.2.1, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack/postcss-loader
-- prepend-file 2.0.1, licensed under MIT
-	Copyright (c) Hemanth.HM <hemanth.hm@gmail.com> (h3manth.com)
-	Source: https://github.com/hemanth/node-prepend-file
 - prettier 3.5.3, licensed under MIT
 	Copyright © James Long and contributors
 	Source: https://github.com/prettier/prettier
-- react 19.2.4, licensed under MIT
+- react 19.2.6, licensed under MIT
 	Copyright (c) Meta Platforms, Inc. and affiliates
 	Source: https://github.com/facebook/react
 - react-dnd 16.0.1, licensed under MIT
 	Copyright (c) 2016 Dan Abramov
 	Source: https://github.com/facebook/react
-- react-dom 19.2.4, licensed under MIT
-	Copyright (c) Meta Platforms, Inc. and affiliates.
+- react-dom 19.2.6, licensed under MIT
+	Copyright (c) Meta Platforms, Inc. and affiliates
 	Source: https://github.com/facebook/react
-- react-redux 7.2.2, licensed under MIT
+- react-redux 9.3.0, licensed under MIT
 	Copyright (c) 2015-present Dan Abramov
 	Source: https://github.com/reduxjs/react-redux
 - react-refresh 0.14.0, licensed under MIT
 	Copyright (c) Meta Platforms, Inc. and affiliates.
 	Source: https://github.com/facebook/react
-- redux 4.0.5, licensed under MIT
+- redux 5.0.1, licensed under MIT
 	Copyright (c) 2015-present Dan Abramov
 	Source: https://github.com/reduxjs/redux
-- redux-saga 1.1.3, licensed under MIT
+- redux-saga 1.5.0, licensed under MIT
 	Copyright (c) Redux-Saga team and other contributors
 	Source: https://github.com/redux-saga/redux-saga
+- rimraf 6.1.3, licensed under BlueOak-1.0.0
+	Copyright (c) 2011-2023 Isaac Z. Schlueter and Contributors
+	Source: https://github.com/isaacs/rimraf
 - rimraf 6.0.1, licensed under ISC
 	Copyright (c) 2011-2023 Isaac Z. Schlueter and Contributors
 	Source: https://github.com/isaacs/rimraf
 - source-map-loader 3.0.1, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack-contrib/source-map-loader
-- styled-components 6.1.18, licensed under MIT
-	Copyright (c) 2016-present Glen Maddern and Maximilian Stoiber
-	Source: https://github.com/styled-components/styled-components
 - style-loader 2.0.0, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack-contrib/style-loader
+- styled-components 6.1.18, licensed under MIT
+	Copyright (c) 2016-present Glen Maddern and Maximilian Stoiber
+	Source: https://github.com/styled-components/styled-components
 - terser-webpack-plugin 5.4.0, licensed under MIT
 	Copyright JS Foundation and other contributors
-	Source: https://github.com/webpack/terser-webpack-plugin
+	Source: https://github.com/webpack-contrib/terser-webpack-plugin
 - ts-morph 19.0.0, licensed under MIT
 	Copyright (c) 2017-2023 David Sherret
 	Source: https://github.com/dsherret/ts-morph
@@ -239,70 +258,37 @@ The following third-party components are included in this distribution:
 - typescript 6.0.2, licensed under Apache-2.0
 	Copyright (c) Microsoft Corporation
 	Source: https://github.com/microsoft/TypeScript
-- typescript-eslint 8.58.1, licensed under MIT
+- typescript-eslint 8.62.1, licensed under MIT
 	Copyright (c) 2019 typescript-eslint and other contributors
 	Source: https://github.com/typescript-eslint/typescript-eslint
 - typescript-fsa 3.0.0, licensed under MIT
 	Copyright (c) 2016 Daniel Lytkin
 	Source: https://github.com/aikoven/typescript-fsa
-- @types/eslint 9.6.1, licensed under MIT
-	Copyrights are respective of each contributor listed at the beginning of each definition file
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/linkify-it 3.0.2, licensed under MIT
-	Copyrights are respective of each contributor listed at the beginning of each definition file
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/node 22.13.9, licensed under MIT
-	Copyright Node.js contributors
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/react 19.2.8, licensed under MIT
-	Copyrights are respective of each contributor listed at the beginning of each definition file
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/react-dom 19.0.4, licensed under MIT
-	Copyrights are respective of each contributor listed at the beginning of each definition file
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/react-dom 19.2.3, licensed under MIT
-	Copyrights are respective of each contributor listed at the beginning of each definition file
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/react-redux 7.1.34, licensed under MIT
-	Copyrights are respective of each contributor listed at the beginning of each definition file
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/webpack-env 1.18.1, licensed under MIT
-	Copyrights are respective of each contributor listed at the beginning of each definition file
-	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- webpack 5.104.1, licensed under MIT
+- vitest 3.2.7, licensed under MIT
+	Copyright (c) 2021-Present Vitest Team
+	Source: https://github.com/vitest-dev/vitest
+- webpack 5.108.3, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack/webpack
-- webpack-cli 4.10.0, licensed under MIT
+- webpack-cli 7.1.0, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack/webpack-cli
-- webpack-dev-server 5.2.1, licensed under MIT
+- webpack-dev-server 5.2.6, licensed under MIT
 	Copyright JS Foundation and other contributors
 	Source: https://github.com/webpack/webpack-dev-server
-- @welldone-software/why-did-you-render 4.2.7, licensed under MIT
-	Copyright (c) 2018-present, Vitali Zaidman <vzaidman@gmail.com>
-	Source: https://github.com/welldone-software/why-did-you-render
 - whatwg-fetch 3.0.0, licensed under MIT
 	Copyright (c) 2014-2023 GitHub, Inc.
 	Source: https://github.com/JakeChampion/fetch
-- yargs 15.3.1, licensed under MIT
+- yargs 15.4.1, licensed under MIT
 	Copyright 2014 Contributors (ben@npmjs.com) and Copyright 2010 James Halliday (mail@substack.net)
 	Source: https://github.com/yargs/yargs
+- org.gradle/gradle-wrapper 9.3.1, licensed under Apache-2.0
+	Copyright © 2015-2021 the original authors
+	Source: https://github.com/gradle/gradle/
 
-- org.antlr/antlr4 4.13.0, licensed under BSD-3-Clause
-	Copyright (c) 2012-2017 The ANTLR Project
-	Source: https://github.com/antlr/antlr4
 - parts from Antlr Grammars-v4
 	License and copyright information stated in the respective files
 	Source: https://github.com/antlr/grammars-v4
-
-NOTICE file of cyclonedx-node-npm
----------------------------------
-
-CycloneDX generator for NPM projects
-Copyright (c) OWASP Foundation. All Rights Reserved.
-
-This product includes software developed by the
-CycloneDX community (https://cyclonedx.org/).
 
 
 License Texts
@@ -323,3 +309,4 @@ respective licenses. For details, see the file LICENSE.
 owners.
 
 End of THIRD_PARTY_NOTICES
+

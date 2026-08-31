@@ -40,13 +40,13 @@ Please refer detailed documentations under:
 
 The following tools are required in order to build this repository:
 
-| Tool   |  Version |
-|--------|---------:|
-| Gradle |    `8.x` |
-| JDK    |   `21.x` |
-| Node   |   `22.x` |
-| npm    |   `10.x` |
-| pnpm   | `10.8.1` |
+| Tool   | Version |
+|--------|--------:|
+| Gradle |   `8.x` |
+| JDK    |  `21.x` |
+| Node   |  `22.x` |
+| npm    |  `10.x` |
+| pnpm   |  `11.x` |
 
 #### How to Build
 
@@ -106,4 +106,4 @@ pnpm lint
 
 **The mgm A12 Team**
 
-[mgm technology partners GmbH](https://www.mgm-tp.com) • [Imprint](https://www.mgm-tp.com/imprint.html)
+[mgm technology partners GmbH](https://www.mgm-tp.com) | [Imprint](https://www.mgm-tp.com/imprint.html)

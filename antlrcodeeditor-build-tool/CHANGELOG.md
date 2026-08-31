@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.0.1 / 2026-08-17]
+### Changed
+* Removed prepend-file to fix security issue
+
+### Bug fixes
+* Issue running the CLI from a folder with spaces in its name
+
 ## [7.0.0 / 2026-04-28]
 ### Changed
 * Migrate from `ts-node` to `tsx` for running theming task

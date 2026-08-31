@@ -2,7 +2,7 @@
   "header": {
     "id": "sample.picus",
     "modelType": "document",
-    "modelVersion": "28.3.0",
+    "modelVersion": "29.4.0",
     "locales": [
       {
         "code": "en"
@@ -22,8 +22,8 @@
       "comment": "Sample form model including Code Editor "
     },
     "modelConfig": {
-      "decimalSeparator": ".",
       "timeZone": "UTC",
+      "decimalSeparator": ".",
       "conditionLanguage": {
         "code": "en_US"
       }
@@ -121,7 +121,10 @@
                       "locale": "de",
                       "text": ""
                     }
-                  ]
+                  ],
+                  "requirednessConfig": {
+                    "mode": "absoluteOrRelativeToNextRepAncestor"
+                  }
                 }
               },
               {

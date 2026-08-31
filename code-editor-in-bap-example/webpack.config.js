@@ -9,15 +9,15 @@
  * a choice of two different licenses:
  *
  * 1. Open-Source License - EUPL v1.2
- * You may redistribute and/or modify this file under the terms of the
- * European Union Public License, version 1.2 - see https://eupl.eu/.
+ *    You may redistribute and/or modify this file under the terms of the
+ *    European Union Public License, version 1.2 - see https://eupl.eu/.
  *
  * 2. Commercial License
- * Alternatively, you may obtain a commercial license from
+ *    Alternatively, you may obtain a commercial license from
  *    mgm technology partners GmbH, that permits use of this software
- * under different terms (including support and maintenance services).
+ *    under different terms (including support and maintenance services).
  *
- * Please contact a12-license@mgm-tp.com for more information.
+ *    Please contact a12-license@mgm-tp.com for more information.
  *
  * You must select and comply with exactly one of the above license options.
  *
@@ -70,11 +70,6 @@ export default (env = { profile: "prod" }, { mode }) => {
 		],
 		client: {
 			overlay: false
-		},
-		onBeforeSetupMiddleware({ app }) {
-			app.use("/static", function (req, res, next) {
-				next();
-			});
 		}
 	};
 
@@ -99,6 +94,13 @@ export default (env = { profile: "prod" }, { mode }) => {
 					test: /\.js$/,
 					enforce: "pre",
 					use: ["source-map-loader"]
+				},
+				{
+					test: /\.m?js$/,
+					include: /node_modules/,
+					resolve: {
+						fullySpecified: false
+					}
 				},
 				{
 					test: /\.css$/,
@@ -130,11 +132,10 @@ export default (env = { profile: "prod" }, { mode }) => {
 		},
 		optimization: {
 			minimizer: [
-				isProduction &&
-					new TerserPlugin({
-						exclude: /sample\.picus\.validation\.js/
-					})
-			].filter(Boolean),
+				new TerserPlugin({
+					exclude: /sample\.picus\.validation\.js$/
+				})
+			],
 			splitChunks: {
 				chunks: "all",
 				maxInitialRequests: Infinity,

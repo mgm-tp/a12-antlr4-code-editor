@@ -1,5 +1,35 @@
-/**
-**/
+/*
+ * SPDX-License-Identifier: EUPL-1.2 OR LicenseRef-commercial
+ *
+ * Copyright (c) 2012-2026 mgm technology partners GmbH
+ *
+ * Dual License
+ * ------------
+ * This source file is part of the mgm A12 Platform and available under
+ * a choice of two different licenses:
+ *
+ * 1. Open-Source License - EUPL v1.2
+ *    You may redistribute and/or modify this file under the terms of the
+ *    European Union Public License, version 1.2 - see https://eupl.eu/.
+ *
+ * 2. Commercial License
+ *    Alternatively, you may obtain a commercial license from
+ *    mgm technology partners GmbH, that permits use of this software
+ *    under different terms (including support and maintenance services).
+ *
+ *    Please contact a12-license@mgm-tp.com for more information.
+ *
+ * You must select and comply with exactly one of the above license options.
+ *
+ * Warranty Disclaimer (applies to either option)
+ * ----------------------------------------------
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND,
+ * WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
+ * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
+ */
+
 var Pair = ValidationRuntimeApi.Pair;
 var MapBuilder = ValidationRuntime.MapBuilder;
 var Feld_t = ValidationRuntime.Feld_t;
@@ -69,34 +99,34 @@ var Meta_Felder_sample_002epicus = (function () {
 	};
 
 	Meta_Felder_sample_002epicus.prototype._initFeldtypen = function () {
-	this._metaFormate.set(
-		0,
-		new FormatDefinitionString(
-			3, // minLaenge
-			50, // maxLaenge
-			3, // minLaengePrintable
-			50, // maxLaengePrintable
-			"", // muster
-			this._mehrsprachigeFehlertexte.get(0), // fehlertexte
-			false, // zeilenUmbruch
-			false, // noValueValidation
-			this._stringHintLists.get(0)
-		)
-	);
-	this._metaFormate.set(
-		1,
-		new FormatDefinitionString(
-			-1, // minLaenge
-			99999, // maxLaenge
-			1, // minLaengePrintable
-			99999, // maxLaengePrintable
-			"", // muster
-			this._mehrsprachigeFehlertexte.get(1), // fehlertexte
-			true, // zeilenUmbruch
-			false, // noValueValidation
-			this._stringHintLists.get(1)
-		)
-	);
+		this._metaFormate.set(
+			0,
+			new FormatDefinitionString(
+				3, // minLaenge
+				50, // maxLaenge
+				3, // minLaengePrintable
+				50, // maxLaengePrintable
+				"", // muster
+				this._mehrsprachigeFehlertexte.get(0), // fehlertexte
+				false, // zeilenUmbruch
+				false, // noValueValidation
+				this._stringHintLists.get(0)
+			)
+		);
+		this._metaFormate.set(
+			1,
+			new FormatDefinitionString(
+				-1, // minLaenge
+				99999, // maxLaenge
+				1, // minLaengePrintable
+				99999, // maxLaengePrintable
+				"", // muster
+				this._mehrsprachigeFehlertexte.get(1), // fehlertexte
+				true, // zeilenUmbruch
+				false, // noValueValidation
+				this._stringHintLists.get(1)
+			)
+		);
 	};
 
 	/*
@@ -106,72 +136,72 @@ var Meta_Felder_sample_002epicus = (function () {
 	 * (lfd. Nummern), zusätzliche Schlüssel-Werte Paare, berechnungsUebertragServer
 	 */
 	Meta_Felder_sample_002epicus.prototype._initFelder = function () {
-	this._felder.push(
-		new Feld_t(
-			0,
-			"Name",
-			"/NormalControls/Name",
-			true,
-			false,
-			this._metaFormate.get(0),
-			"sample_002epicusNameValidate",
-			[0],
-			[0],
-			new MapBuilder()
-				.put("DruckText", new MapBuilder().put("en", "").put("de", "").build())
-				.put("GlobalesFeld", false)
-				.put("ExplicitlyMandatory", true)
-				.put("TransientField", false)
-				.put("IndexField", false).build(),
-			new Set(),
-			false,
-			this._errorTexts4Req.get(0)
-		)
-	);
-	this._felder.push(
-		new Feld_t(
-			1,
-			"Description",
-			"/NormalControls/Description",
-			true,
-			false,
-			this._metaFormate.get(0),
-			"sample_002epicusDescriptionValidate",
-			[0],
-			[0],
-			new MapBuilder()
-				.put("DruckText", new MapBuilder().put("en", "").put("de", "").build())
-				.put("GlobalesFeld", false)
-				.put("ExplicitlyMandatory", true)
-				.put("TransientField", false)
-				.put("IndexField", false).build(),
-			new Set(),
-			false,
-			this._errorTexts4Req.get(1)
-		)
-	);
-	this._felder.push(
-		new Feld_t(
-			2,
-			"CodeEditor",
-			"/ControlWithCodeEditor/CodeEditor",
-			false,
-			false,
-			this._metaFormate.get(1),
-			"sample_002epicusCodeEditorValidate",
-			[],
-			[],
-			new MapBuilder()
-				.put("DruckText", new MapBuilder().put("en", "").put("de", "").build())
-				.put("GlobalesFeld", false)
-				.put("ExplicitlyMandatory", false)
-				.put("TransientField", false)
-				.put("IndexField", false).build(),
-			new Set(),
-			false,
-			this._errorTexts4Req.get(2)
-		)
-	);
+		this._felder.push(
+			new Feld_t(
+				0,
+				"Name",
+				"/NormalControls/Name",
+				true,
+				false,
+				this._metaFormate.get(0),
+				"sample_002epicusNameValidate",
+				[0],
+				[0],
+				new MapBuilder()
+					.put("DruckText", new MapBuilder().put("en", "").put("de", "").build())
+					.put("GlobalesFeld", false)
+					.put("ExplicitlyMandatory", true)
+					.put("TransientField", false)
+					.put("IndexField", false).build(),
+				new Set(),
+				false,
+				this._errorTexts4Req.get(0)
+			)
+		);
+		this._felder.push(
+			new Feld_t(
+				1,
+				"Description",
+				"/NormalControls/Description",
+				true,
+				false,
+				this._metaFormate.get(0),
+				"sample_002epicusDescriptionValidate",
+				[0],
+				[0],
+				new MapBuilder()
+					.put("DruckText", new MapBuilder().put("en", "").put("de", "").build())
+					.put("GlobalesFeld", false)
+					.put("ExplicitlyMandatory", true)
+					.put("TransientField", false)
+					.put("IndexField", false).build(),
+				new Set(),
+				false,
+				this._errorTexts4Req.get(1)
+			)
+		);
+		this._felder.push(
+			new Feld_t(
+				2,
+				"CodeEditor",
+				"/ControlWithCodeEditor/CodeEditor",
+				false,
+				false,
+				this._metaFormate.get(1),
+				"sample_002epicusCodeEditorValidate",
+				[],
+				[],
+				new MapBuilder()
+					.put("DruckText", new MapBuilder().put("en", "").put("de", "").build())
+					.put("GlobalesFeld", false)
+					.put("ExplicitlyMandatory", false)
+					.put("TransientField", false)
+					.put("IndexField", false).build(),
+				new Set(),
+				false,
+				this._errorTexts4Req.get(2)
+			)
+		);
 	};
 
 
@@ -204,41 +234,41 @@ var Meta_Regel_sample_002epicus = (function () {
 	Meta_Regel_sample_002epicus.ANZAHL_REGELN = 4;
 
 	Meta_Regel_sample_002epicus.prototype._initRegelRefs = function () {
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule'
-	this._refIdentifier[0] = [
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule'
+		this._refIdentifier[0] = [
 			new Identifier_t(2, [1, 1], ReferenzTyp.KEINE_BERECHNUNG, null, null)];
 
 
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule'
-	this._refIdentifier[1] = [
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule'
+		this._refIdentifier[1] = [
 			new Identifier_t(2, [1, 1], ReferenzTyp.KEINE_BERECHNUNG, null, null)];
 
 
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule_Error'
-	this._refIdentifier[2] = [
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule_Error'
+		this._refIdentifier[2] = [
 			new Identifier_t(2, [1, 1], ReferenzTyp.KEINE_BERECHNUNG, null, null)];
 
 
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule_Pending_Validation'
-	this._refIdentifier[3] = [
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule_Pending_Validation'
+		this._refIdentifier[3] = [
 			new Identifier_t(2, [1, 1], ReferenzTyp.KEINE_BERECHNUNG, null, null)];
 
 
 	};
 
 	Meta_Regel_sample_002epicus.prototype._initRegelFehlertexte = function () {
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule'
-	this._mehrsprachigeFehlertexte.get(0).set("de", "Ungültiger Code");this._mehrsprachigeFehlertexte.get(0).set("en", "Invalid code");
-	this._fehlertexteParameterMapping.set(0, new MapBuilder().build());
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule'
-	this._mehrsprachigeFehlertexte.get(1).set("de", "Zusätzliche Warnmeldung zur Regelbedingung");this._mehrsprachigeFehlertexte.get(1).set("en", "Additional rule condition warning message");
-	this._fehlertexteParameterMapping.set(1, new MapBuilder().build());
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule_Error'
-	this._mehrsprachigeFehlertexte.get(2).set("de", "Zusätzliche Regelbedingungsfehlermeldung");this._mehrsprachigeFehlertexte.get(2).set("en", "Additional rule condition error message");
-	this._fehlertexteParameterMapping.set(2, new MapBuilder().build());
-	// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule_Pending_Validation'
-	this._mehrsprachigeFehlertexte.get(3).set("de", "Ausstehender Validierungsjob. Warten Sie mal!");this._mehrsprachigeFehlertexte.get(3).set("en", "Pending validation job. Please wait!");
-	this._fehlertexteParameterMapping.set(3, new MapBuilder().build());
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule'
+		this._mehrsprachigeFehlertexte.get(0).set("de", "Ungültiger Code");this._mehrsprachigeFehlertexte.get(0).set("en", "Invalid code");
+		this._fehlertexteParameterMapping.set(0, new MapBuilder().build());
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule'
+		this._mehrsprachigeFehlertexte.get(1).set("de", "Zusätzliche Warnmeldung zur Regelbedingung");this._mehrsprachigeFehlertexte.get(1).set("en", "Additional rule condition warning message");
+		this._fehlertexteParameterMapping.set(1, new MapBuilder().build());
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorAdditionRule_Error'
+		this._mehrsprachigeFehlertexte.get(2).set("de", "Zusätzliche Regelbedingungsfehlermeldung");this._mehrsprachigeFehlertexte.get(2).set("en", "Additional rule condition error message");
+		this._fehlertexteParameterMapping.set(2, new MapBuilder().build());
+		// Init Daten zur Regel '/ControlWithCodeEditor/CodeEditorRule_Pending_Validation'
+		this._mehrsprachigeFehlertexte.get(3).set("de", "Ausstehender Validierungsjob. Warten Sie mal!");this._mehrsprachigeFehlertexte.get(3).set("en", "Pending validation job. Please wait!");
+		this._fehlertexteParameterMapping.set(3, new MapBuilder().build());
 	};
 
 	/*
@@ -247,13 +277,13 @@ var Meta_Regel_sample_002epicus = (function () {
 	 * refAuslassungsIdentifier, refAuslassungsVordrucke, fehlerFeld, serverBerechnungsRegel
 	 */
 	Meta_Regel_sample_002epicus.prototype._initRegeln = function () {
-	this._regeln.push(new Regel_t("CodeEditorRule", "/ControlWithCodeEditor/CodeEditorRule", "Error rule_bba8e", this._mehrsprachigeFehlertexte.get(0), this._fehlertexteParameterMapping.get(0), "Fehler", this._refIdentifier[0], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
+		this._regeln.push(new Regel_t("CodeEditorRule", "/ControlWithCodeEditor/CodeEditorRule", "Error rule_bba8e", this._mehrsprachigeFehlertexte.get(0), this._fehlertexteParameterMapping.get(0), "Fehler", this._refIdentifier[0], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
 
-	this._regeln.push(new Regel_t("CodeEditorAdditionRule", "/ControlWithCodeEditor/CodeEditorAdditionRule", "Error rule_157e6", this._mehrsprachigeFehlertexte.get(1), this._fehlertexteParameterMapping.get(1), "Hinweis", this._refIdentifier[1], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
+		this._regeln.push(new Regel_t("CodeEditorAdditionRule", "/ControlWithCodeEditor/CodeEditorAdditionRule", "Error rule_157e6", this._mehrsprachigeFehlertexte.get(1), this._fehlertexteParameterMapping.get(1), "Hinweis", this._refIdentifier[1], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
 
-	this._regeln.push(new Regel_t("CodeEditorAdditionRule_Error", "/ControlWithCodeEditor/CodeEditorAdditionRule_Error", "Error rule_157e6", this._mehrsprachigeFehlertexte.get(2), this._fehlertexteParameterMapping.get(2), "Fehler", this._refIdentifier[2], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
+		this._regeln.push(new Regel_t("CodeEditorAdditionRule_Error", "/ControlWithCodeEditor/CodeEditorAdditionRule_Error", "Error rule_157e6", this._mehrsprachigeFehlertexte.get(2), this._fehlertexteParameterMapping.get(2), "Fehler", this._refIdentifier[2], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
 
-	this._regeln.push(new Regel_t("CodeEditorRule_Pending_Validation", "/ControlWithCodeEditor/CodeEditorRule_Pending_Validation", "Error rule_bba8e", this._mehrsprachigeFehlertexte.get(3), this._fehlertexteParameterMapping.get(3), "Hinweis", this._refIdentifier[3], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
+		this._regeln.push(new Regel_t("CodeEditorRule_Pending_Validation", "/ControlWithCodeEditor/CodeEditorRule_Pending_Validation", "Error rule_bba8e", this._mehrsprachigeFehlertexte.get(3), this._fehlertexteParameterMapping.get(3), "Hinweis", this._refIdentifier[3], null, null, "/ControlWithCodeEditor/CodeEditor", false, false, new MapBuilder().build(), new Set()));
 
 	};
 
@@ -279,14 +309,14 @@ var Meta_PfFeld_sample_002epicus = (function () {
 	return Meta_PfFeld_sample_002epicus;
 }());
 var getMetaFSMenge = function (beschreibung) {
-		var result = new HashSet();
-		var felder = beschreibung.split(";");
-		for (var i = 0; i < felder.length; i++) {
-			if (felder[i].length > 0) {
-				result.add(MetaIdentifier.parse(felder[i]));
-			}
+	var result = new HashSet();
+	var felder = beschreibung.split(";");
+	for (var i = 0; i < felder.length; i++) {
+		if (felder[i].length > 0) {
+			result.add(MetaIdentifier.parse(felder[i]));
 		}
-		return result;
+	}
+	return result;
 };
 
 var Meta_sample_002epicus = (function () {
@@ -295,18 +325,18 @@ var Meta_sample_002epicus = (function () {
 		this._metaRegeln = new Meta_Regel_sample_002epicus();
 		this._unterstuetzteSprachen = ["en", "de"];
 		this._da = new Model_t(
-				"28.4.0", // Produkt-Version
-				".", // dezimaltrenner
-				["en", "de"], // unterstuetzte Sprachen
-				MetaDataHelper.createSetOfStrings("CodeEditorCondition", "CodeEditorPendingValidation", "ProjectConditionError", "ProjectConditionWarning"), //  Namen der Applikationsbedingungen
-				MetaDataHelper.createSetOfStrings(), // Names of custom field types
-				// additional Values
-				new MapBuilder()
-					.put("BaseYear", null)
-					.put("TimeZone", "UTC")
-					.put("ModelId", "sample.picus").build(),
-				new Set(["TimeZone", "BaseYear", "ModelId"])
-			);
+			"29.4.0", // Produkt-Version
+			".", // dezimaltrenner
+			["en", "de"], // unterstuetzte Sprachen
+			MetaDataHelper.createSetOfStrings("CodeEditorCondition", "CodeEditorPendingValidation", "ProjectConditionError", "ProjectConditionWarning"), //  Namen der Applikationsbedingungen
+			MetaDataHelper.createSetOfStrings(), // Names of custom field types
+			// additional Values
+			new MapBuilder()
+				.put("BaseYear", null)
+				.put("TimeZone", "UTC")
+				.put("ModelId", "sample.picus").build(),
+			new Set(["TimeZone", "BaseYear", "ModelId"])
+		);
 		if (Meta_sample_002epicus._instance) {
 			throw new Error("Error: Instantiation failed: Use Meta_sample_002epicus.getInstance() instead of new.");
 		}
@@ -320,12 +350,12 @@ var Meta_sample_002epicus = (function () {
 			Meta_sample_002epicus.LEGAL_CHARACTERS,
 			Meta_sample_002epicus.LEGAL_GRAPHEME_TRIE,
 			() => E_sample_002epicus.getInstance()
-        );
+		);
 		var metaPlfFeldInfo = new Meta_PfFeld_sample_002epicus(this._meta.getMetaDataValidierung());
 		metaPlfFeldInfo
 			.addLokalePflichtFeldInfos(this._meta.getValue(IMetaKeysInternal.MODEL_ADDITIV_PFLICHTFELD));
 	}
-	Object.defineProperty(Meta_sample_002epicus, "RUNTIME_VERSION", { get: function () { return "31.0"; },
+	Object.defineProperty(Meta_sample_002epicus, "RUNTIME_VERSION", { get: function () { return "31.1"; },
 		enumerable: true,
 		configurable: true
 	});
@@ -351,12 +381,12 @@ var Meta_sample_002epicus = (function () {
 		configurable: true
 	});
 	Object.defineProperty(Meta_sample_002epicus, "LEGAL_GRAPHEME_TRIE", {
-    		get: function () {
-    			return new TrieNode(new Map(), false);
-    		},
-    		enumerable: true,
-    		configurable: true
-    	});
+		get: function () {
+			return new TrieNode(new Map(), false);
+		},
+		enumerable: true,
+		configurable: true
+	});
 
 	Meta_sample_002epicus.getInstance = function () {
 		return Meta_sample_002epicus._instance;
@@ -404,7 +434,7 @@ var Meta_sample_002epicus = (function () {
 		E_sample_002epicus._valueCalcObject = this;
 		this._feldData = Meta_sample_002epicus.getInstance();
 		this._metaDataValidierung = this._feldData.getMetaDataValidierung();
-	}	
+	}
 	E_sample_002epicus.getInstance = function () {
 		return this._valueCalcObject;
 	};
@@ -444,27 +474,27 @@ var C_sample_002epicus = (function () {
 	C_sample_002epicus.CALCULATED_FIELD_FULL_NAMES_IN_ORDER = [];
 
 	C_sample_002epicus.prototype.executeCalculation = function(fullFieldName, controller) {
-	    const startMesspunkt = controller.startMesspunkt();
-	    const calcFuncName = C_sample_002epicus.CALC_FUNC_NAME_MAP.get(fullFieldName);
-	    this[calcFuncName](controller);
-	    controller.logMessung(calcFuncName, startMesspunkt);
-    };
+		const startMesspunkt = controller.startMesspunkt();
+		const calcFuncName = C_sample_002epicus.CALC_FUNC_NAME_MAP.get(fullFieldName);
+		this[calcFuncName](controller);
+		controller.logMessung(calcFuncName, startMesspunkt);
+	};
 
-    C_sample_002epicus.prototype.hasCalculation = function(fullFieldName) {
-        return C_sample_002epicus.CALC_FUNC_NAME_MAP.has(fullFieldName);
-    };
+	C_sample_002epicus.prototype.hasCalculation = function(fullFieldName) {
+		return C_sample_002epicus.CALC_FUNC_NAME_MAP.has(fullFieldName);
+	};
 
-    C_sample_002epicus.prototype.getDependencyGraph = function() {
-        return C_sample_002epicus.CALCULATED_FIELD_DEPENDENCIES;
-    };
+	C_sample_002epicus.prototype.getDependencyGraph = function() {
+		return C_sample_002epicus.CALCULATED_FIELD_DEPENDENCIES;
+	};
 
 	C_sample_002epicus.prototype.getExpandedOperandFieldsOfCalculations = function() {
-        return C_sample_002epicus.EXPANDED_OPERAND_FIELDS_OF_CALCULATIONS;
-    }
+		return C_sample_002epicus.EXPANDED_OPERAND_FIELDS_OF_CALCULATIONS;
+	}
 
-    C_sample_002epicus.prototype.getCalculatedFieldFullNamesInOrder = function() {
-        return C_sample_002epicus.CALCULATED_FIELD_FULL_NAMES_IN_ORDER;
-    }
+	C_sample_002epicus.prototype.getCalculatedFieldFullNamesInOrder = function() {
+		return C_sample_002epicus.CALCULATED_FIELD_FULL_NAMES_IN_ORDER;
+	}
 
 	C_sample_002epicus._checkObject = new C_sample_002epicus();
 	return C_sample_002epicus;
@@ -491,15 +521,15 @@ var R_sample_002epicus = (function () {
 			while (innerIter.hasNext()) {
 				var idx = innerIter.next();
 				if (controller.alleFelderAngegeben(idx, allRtIdCon1).isKnownAndTrue()&&controller.applikationsBedingung("CodeEditorCondition", RtInternalIdentifier.createFromIterationState("CodeEditor", idx)).isKnownAndTrue()) {
-						controller.addValidatorMessage("CodeEditor", idx, "Error rule_bba8e");
+					controller.addValidatorMessage("CodeEditor", idx, "Error rule_bba8e");
 				}
 			}
 		}
 		catch (e) {
-		    if (e instanceof CustomConditionException) {
-		        throw e;
-		    } else {
-			    controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_bba8e", e);
+			if (e instanceof CustomConditionException) {
+				throw e;
+			} else {
+				controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_bba8e", e);
 			}
 		}
 	};
@@ -517,15 +547,15 @@ var R_sample_002epicus = (function () {
 			while (innerIter.hasNext()) {
 				var idx = innerIter.next();
 				if (controller.alleFelderAngegeben(idx, allRtIdCon1).isKnownAndTrue()&&controller.applikationsBedingung("ProjectConditionWarning", RtInternalIdentifier.createFromIterationState("CodeEditor", idx)).isKnownAndTrue()) {
-						controller.addValidatorMessage("CodeEditor", idx, "Error rule_157e6");
+					controller.addValidatorMessage("CodeEditor", idx, "Error rule_157e6");
 				}
 			}
 		}
 		catch (e) {
-		    if (e instanceof CustomConditionException) {
-		        throw e;
-		    } else {
-			    controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_157e6", e);
+			if (e instanceof CustomConditionException) {
+				throw e;
+			} else {
+				controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_157e6", e);
 			}
 		}
 	};
@@ -543,15 +573,15 @@ var R_sample_002epicus = (function () {
 			while (innerIter.hasNext()) {
 				var idx = innerIter.next();
 				if (controller.alleFelderAngegeben(idx, allRtIdCon1).isKnownAndTrue()&&controller.applikationsBedingung("ProjectConditionError", RtInternalIdentifier.createFromIterationState("CodeEditor", idx)).isKnownAndTrue()) {
-						controller.addValidatorMessage("CodeEditor", idx, "Error rule_157e6");
+					controller.addValidatorMessage("CodeEditor", idx, "Error rule_157e6");
 				}
 			}
 		}
 		catch (e) {
-		    if (e instanceof CustomConditionException) {
-		        throw e;
-		    } else {
-			    controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_157e6", e);
+			if (e instanceof CustomConditionException) {
+				throw e;
+			} else {
+				controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_157e6", e);
 			}
 		}
 	};
@@ -569,15 +599,15 @@ var R_sample_002epicus = (function () {
 			while (innerIter.hasNext()) {
 				var idx = innerIter.next();
 				if (controller.alleFelderAngegeben(idx, allRtIdCon1).isKnownAndTrue()&&controller.applikationsBedingung("CodeEditorPendingValidation", RtInternalIdentifier.createFromIterationState("CodeEditor", idx)).isKnownAndTrue()) {
-						controller.addValidatorMessage("CodeEditor", idx, "Error rule_bba8e");
+					controller.addValidatorMessage("CodeEditor", idx, "Error rule_bba8e");
 				}
 			}
 		}
 		catch (e) {
-		    if (e instanceof CustomConditionException) {
-		        throw e;
-		    } else {
-			    controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_bba8e", e);
+			if (e instanceof CustomConditionException) {
+				throw e;
+			} else {
+				controller.addValidatorMessage("CodeEditor", iter.get(), "Error rule_bba8e", e);
 			}
 		}
 	};
@@ -595,15 +625,15 @@ var R_sample_002epicus = (function () {
 			while (innerIter.hasNext()) {
 				var idx = innerIter.next();
 				if (controller.keinFeldAngegeben(idx, allRtIdCon1).isKnownAndTrue()) {
-						controller.preliminaryError("Name", idx, IFormaleFehlerConstants.FEHLER_PFLICHTFELD, RuntimeFormalErrorEnum.PFLICHT_FELD_FEHLER, ErrorType.OMISSION_ERROR);
+					controller.preliminaryError("Name", idx, IFormaleFehlerConstants.FEHLER_PFLICHTFELD, RuntimeFormalErrorEnum.PFLICHT_FELD_FEHLER, ErrorType.OMISSION_ERROR);
 				}
 			}
 		}
 		catch (e) {
-		    if (e instanceof CustomConditionException) {
-		        throw e;
-		    } else {
-			    controller.addValidatorMessage("Name", iter.get(), "mandatoryField", e);
+			if (e instanceof CustomConditionException) {
+				throw e;
+			} else {
+				controller.addValidatorMessage("Name", iter.get(), "mandatoryField", e);
 			}
 		}
 	};
@@ -621,22 +651,22 @@ var R_sample_002epicus = (function () {
 			while (innerIter.hasNext()) {
 				var idx = innerIter.next();
 				if (controller.keinFeldAngegeben(idx, allRtIdCon1).isKnownAndTrue()) {
-						controller.preliminaryError("Description", idx, IFormaleFehlerConstants.FEHLER_PFLICHTFELD, RuntimeFormalErrorEnum.PFLICHT_FELD_FEHLER, ErrorType.OMISSION_ERROR);
+					controller.preliminaryError("Description", idx, IFormaleFehlerConstants.FEHLER_PFLICHTFELD, RuntimeFormalErrorEnum.PFLICHT_FELD_FEHLER, ErrorType.OMISSION_ERROR);
 				}
 			}
 		}
 		catch (e) {
-		    if (e instanceof CustomConditionException) {
-		        throw e;
-		    } else {
-			    controller.addValidatorMessage("Description", iter.get(), "mandatoryField", e);
+			if (e instanceof CustomConditionException) {
+				throw e;
+			} else {
+				controller.addValidatorMessage("Description", iter.get(), "mandatoryField", e);
 			}
 		}
 	};
 
 
 	R_sample_002epicus.vordruckF__global = function (controller) {
-	/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
+		/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
 		var indices = [0];
 		var startMesspunkt = -1;
 		startMesspunkt = controller.startMesspunkt();
@@ -647,7 +677,7 @@ var R_sample_002epicus = (function () {
 		controller.logMessung("mvk_CodeEditorAdditionRule_Error", indices[0], startMesspunkt);
 	};
 	R_sample_002epicus.vordruckH__global = function (controller) {
-	/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
+		/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
 		var indices = [0];
 		var startMesspunkt = -1;
 		startMesspunkt = controller.startMesspunkt();
@@ -658,7 +688,7 @@ var R_sample_002epicus = (function () {
 		controller.logMessung("mvk_CodeEditorRule_Pending_Validation", indices[0], startMesspunkt);
 	};
 	R_sample_002epicus.vordruck__global = function (controller) {
-	/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
+		/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
 		var indices = [0];
 		var startMesspunkt = -1;
 		startMesspunkt = controller.startMesspunkt();
@@ -675,7 +705,7 @@ var R_sample_002epicus = (function () {
 		controller.logMessung("mvk_CodeEditorRule_Pending_Validation", indices[0], startMesspunkt);
 	};
 	R_sample_002epicus.vordruckP__global = function (controller) {
-	/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
+		/* Aufruf der Regeln fuer Vordruck global für eine spezifische lfdNr. */
 		var indices = [0];
 		var startMesspunkt = -1;
 		startMesspunkt = controller.startMesspunkt();
@@ -711,7 +741,7 @@ var R_sample_002epicus = (function () {
 
 	R_sample_002epicus.prototype.validatePreliminaryRules = function(controller) {
 		R_sample_002epicus.vordruckP__global(controller);
-};
+	};
 
 	R_sample_002epicus.prototype.validiereVoll = function (controller, modus) {
 		switch (modus.getRuleType()) {
@@ -719,9 +749,9 @@ var R_sample_002epicus = (function () {
 				this.alleRegeln(controller);
 				break;
 			case RuleType.INFO:
-                this.alleInfoRegeln(controller);
-                break;
-            case RuleType.HINT:
+				this.alleInfoRegeln(controller);
+				break;
+			case RuleType.HINT:
 				this.alleHinweisRegeln(controller);
 				break;
 			case RuleType.ERROR:
@@ -739,9 +769,9 @@ var R_sample_002epicus = (function () {
 				checker = new TVCheckAlle_sample_002epicus();
 				break;
 			case RuleType.INFO:
-                checker = new TVCheckInfo_sample_002epicus();
-                break;
-            case RuleType.HINT:
+				checker = new TVCheckInfo_sample_002epicus();
+				break;
+			case RuleType.HINT:
 				checker = new TVCheckHinweis_sample_002epicus();
 				break;
 			case RuleType.ERROR:
@@ -766,18 +796,18 @@ var R_sample_002epicus = (function () {
 	R_sample_002epicus.prototype.alleRegeln = function (controller) {
 		// Aufruf aller Regeln
 		R_sample_002epicus.vordruck__global(controller);
-};
+	};
 	R_sample_002epicus.prototype.alleFehlerRegeln = function (controller) {
 		// Aufruf aller Fehler-Regeln
 		R_sample_002epicus.vordruckF__global(controller);
-};
+	};
 	R_sample_002epicus.prototype.alleHinweisRegeln = function (controller) {
 		// Aufruf aller Hinweis-Regeln
 		R_sample_002epicus.vordruckH__global(controller);
-};
+	};
 	R_sample_002epicus.prototype.alleInfoRegeln = function (controller) {
-        // Aufruf aller Info-Regeln
-};
+		// Aufruf aller Info-Regeln
+	};
 	R_sample_002epicus._checkObject = new R_sample_002epicus();
 	return R_sample_002epicus;
 }());
@@ -797,18 +827,18 @@ var TVCheckFehler_sample_002epicus = (function () {
 	};
 
 	/**
-	* Führt die Validierung für alle Regeln aus, deren Aktionsfeld die
-	* angegebene interne Feldnummer besitzt wenn diese Nummer im Intervall [2,2]
-	* liegt.
-	*
-	* In der Methode werden allerdings nur interne Nummern von Feldern
-	* betrachtet, die Aktionsfelder einer Methode sind. Es müssen somit nicht alle
-	* Felder des Intervalls in der Switch-Anweisung berücksichtigt werden.
-	*
-	* @param controller
-	* @param interneFeldNr
-	* @param indices
-	*/
+	 * Führt die Validierung für alle Regeln aus, deren Aktionsfeld die
+	 * angegebene interne Feldnummer besitzt wenn diese Nummer im Intervall [2,2]
+	 * liegt.
+	 *
+	 * In der Methode werden allerdings nur interne Nummern von Feldern
+	 * betrachtet, die Aktionsfelder einer Methode sind. Es müssen somit nicht alle
+	 * Felder des Intervalls in der Switch-Anweisung berücksichtigt werden.
+	 *
+	 * @param controller
+	 * @param interneFeldNr
+	 * @param indices
+	 */
 
 	TVCheckFehler_sample_002epicus.prototype._fuehreAus_0 = function(controller, interneFeldNr, indices) {
 		var startMesspunkt = -1;
@@ -822,15 +852,15 @@ var TVCheckFehler_sample_002epicus = (function () {
 				controller.logMessung("mvk_CodeEditorAdditionRule_Error", indices[0], startMesspunkt);
 				break;
 			default:
-			if (interneFeldNr <= 2) {
-				/* In der Methode werden nur interne Nummern von Feldern
-				 * betrachtet, die Aktionsfelder einer Methode sind. Es werden somit nicht alle
-				 * Zahlen des Intervalls in der Switch-Anweisung berücksichtigt.
-				 */
-			} else {
-				throw new Error("Die interne Feldnummer " + interneFeldNr + " liegt nicht im Interval [2,2].");
-			}
-			break;
+				if (interneFeldNr <= 2) {
+					/* In der Methode werden nur interne Nummern von Feldern
+					 * betrachtet, die Aktionsfelder einer Methode sind. Es werden somit nicht alle
+					 * Zahlen des Intervalls in der Switch-Anweisung berücksichtigt.
+					 */
+				} else {
+					throw new Error("Die interne Feldnummer " + interneFeldNr + " liegt nicht im Interval [2,2].");
+				}
+				break;
 		}
 	};
 
@@ -847,18 +877,18 @@ var TVCheckHinweis_sample_002epicus = (function () {
 
 	};
 	/**
-	* Führt die Validierung für alle Regeln aus, deren Aktionsfeld die
-	* angegebene interne Feldnummer besitzt wenn diese Nummer im Intervall [2,2]
-	* liegt.
-	*
-	* In der Methode werden allerdings nur interne Nummern von Feldern
-	* betrachtet, die Aktionsfelder einer Methode sind. Es müssen somit nicht alle
-	* Felder des Intervalls in der Switch-Anweisung berücksichtigt werden.
-	*
-	* @param controller
-	* @param interneFeldNr
-	* @param indices
-	*/
+	 * Führt die Validierung für alle Regeln aus, deren Aktionsfeld die
+	 * angegebene interne Feldnummer besitzt wenn diese Nummer im Intervall [2,2]
+	 * liegt.
+	 *
+	 * In der Methode werden allerdings nur interne Nummern von Feldern
+	 * betrachtet, die Aktionsfelder einer Methode sind. Es müssen somit nicht alle
+	 * Felder des Intervalls in der Switch-Anweisung berücksichtigt werden.
+	 *
+	 * @param controller
+	 * @param interneFeldNr
+	 * @param indices
+	 */
 
 	TVCheckHinweis_sample_002epicus.prototype._fuehreAus_0 = function(controller, interneFeldNr, indices) {
 		var startMesspunkt = -1;
@@ -872,15 +902,15 @@ var TVCheckHinweis_sample_002epicus = (function () {
 				controller.logMessung("mvk_CodeEditorRule_Pending_Validation", indices[0], startMesspunkt);
 				break;
 			default:
-			if (interneFeldNr <= 2) {
-				/* In der Methode werden nur interne Nummern von Feldern
-				 * betrachtet, die Aktionsfelder einer Methode sind. Es werden somit nicht alle
-				 * Zahlen des Intervalls in der Switch-Anweisung berücksichtigt.
-				 */
-			} else {
-				throw new Error("Die interne Feldnummer " + interneFeldNr + " liegt nicht im Interval [2,2].");
-			}
-			break;
+				if (interneFeldNr <= 2) {
+					/* In der Methode werden nur interne Nummern von Feldern
+					 * betrachtet, die Aktionsfelder einer Methode sind. Es werden somit nicht alle
+					 * Zahlen des Intervalls in der Switch-Anweisung berücksichtigt.
+					 */
+				} else {
+					throw new Error("Die interne Feldnummer " + interneFeldNr + " liegt nicht im Interval [2,2].");
+				}
+				break;
 		}
 	};
 	return TVCheckHinweis_sample_002epicus;
@@ -890,7 +920,7 @@ var TVCheckInfo_sample_002epicus = (function () {
 		this._checkObject = R_sample_002epicus.getInstance();
 	}
 	TVCheckInfo_sample_002epicus.prototype.fuehreAus = function (controller, interneFeldNr, indices) {
-			// The model does not contain any rules of severity 'INFO'.
+		// The model does not contain any rules of severity 'INFO'.
 	};
 	return TVCheckInfo_sample_002epicus;
 }());
@@ -922,18 +952,18 @@ var TVCheckPreliminary_sample_002epicus = (function () {
 
 	};
 	/**
-	* Führt die Validierung für alle Regeln aus, deren Aktionsfeld die
-	* angegebene interne Feldnummer besitzt wenn diese Nummer im Intervall [0,1]
-	* liegt.
-	*
-	* In der Methode werden allerdings nur interne Nummern von Feldern
-	* betrachtet, die Aktionsfelder einer Methode sind. Es müssen somit nicht alle
-	* Felder des Intervalls in der Switch-Anweisung berücksichtigt werden.
-	*
-	* @param controller
-	* @param interneFeldNr
-	* @param indices
-	*/
+	 * Führt die Validierung für alle Regeln aus, deren Aktionsfeld die
+	 * angegebene interne Feldnummer besitzt wenn diese Nummer im Intervall [0,1]
+	 * liegt.
+	 *
+	 * In der Methode werden allerdings nur interne Nummern von Feldern
+	 * betrachtet, die Aktionsfelder einer Methode sind. Es müssen somit nicht alle
+	 * Felder des Intervalls in der Switch-Anweisung berücksichtigt werden.
+	 *
+	 * @param controller
+	 * @param interneFeldNr
+	 * @param indices
+	 */
 
 	TVCheckPreliminary_sample_002epicus.prototype._fuehreAus_0 = function(controller, interneFeldNr, indices) {
 		var startMesspunkt = -1;
@@ -949,15 +979,15 @@ var TVCheckPreliminary_sample_002epicus = (function () {
 				controller.logMessung("mvk_vk_vkDescription_req", indices[0], startMesspunkt);
 				break;
 			default:
-			if (interneFeldNr <= 1) {
-				/* In der Methode werden nur interne Nummern von Feldern
-				 * betrachtet, die Aktionsfelder einer Methode sind. Es werden somit nicht alle
-				 * Zahlen des Intervalls in der Switch-Anweisung berücksichtigt.
-				 */
-			} else {
-				throw new Error("Die interne Feldnummer " + interneFeldNr + " liegt nicht im Interval [0,1].");
-			}
-			break;
+				if (interneFeldNr <= 1) {
+					/* In der Methode werden nur interne Nummern von Feldern
+					 * betrachtet, die Aktionsfelder einer Methode sind. Es werden somit nicht alle
+					 * Zahlen des Intervalls in der Switch-Anweisung berücksichtigt.
+					 */
+				} else {
+					throw new Error("Die interne Feldnummer " + interneFeldNr + " liegt nicht im Interval [0,1].");
+				}
+				break;
 		}
 	};
 	return TVCheckPreliminary_sample_002epicus;
@@ -984,20 +1014,20 @@ var ERValidator_sample_002epicus = (function () {
 		}
 	};
 	ERValidator_sample_002epicus.prototype.validatePartlyWith3ValueLogic = function (daten, relevantEntities, ergebnis, modus, logger) {
-        this.pruefeParams(daten, ergebnis, logger, modus);
-        var c = new ValidationCommand(R_sample_002epicus.getInstance(), modus, ERValidator_sample_002epicus._metaData, logger);
-        c.processPartlyValidation(daten, relevantEntities, ergebnis);
+		this.pruefeParams(daten, ergebnis, logger, modus);
+		var c = new ValidationCommand(R_sample_002epicus.getInstance(), modus, ERValidator_sample_002epicus._metaData, logger);
+		c.processPartlyValidation(daten, relevantEntities, ergebnis);
 	}
 	ERValidator_sample_002epicus.prototype.validateAll = function (daten, ergebnis, modus, logger) {
-        this.pruefeParams(daten, ergebnis, logger, modus);
-        var c = new ValidationCommand(R_sample_002epicus.getInstance(), modus, ERValidator_sample_002epicus._metaData, logger);
-        c.processFullValidation(daten, ergebnis);
+		this.pruefeParams(daten, ergebnis, logger, modus);
+		var c = new ValidationCommand(R_sample_002epicus.getInstance(), modus, ERValidator_sample_002epicus._metaData, logger);
+		c.processFullValidation(daten, ergebnis);
 	};
 	ERValidator_sample_002epicus.prototype.calculateAll = function (daten, modus, ergebnis, logger, externalCalculations, changedFieldInstances, forceCalculationSorting) {
-        this.pruefeParams(daten, ergebnis, logger, modus);
-        var c = new CalculationCommand(R_sample_002epicus.getInstance(), modus, ERValidator_sample_002epicus._metaData, logger, C_sample_002epicus.getInstance(), externalCalculations, changedFieldInstances, forceCalculationSorting);
-        var result = c.processCalc(daten, ergebnis);
-        return result;
+		this.pruefeParams(daten, ergebnis, logger, modus);
+		var c = new CalculationCommand(R_sample_002epicus.getInstance(), modus, ERValidator_sample_002epicus._metaData, logger, C_sample_002epicus.getInstance(), externalCalculations, changedFieldInstances, forceCalculationSorting);
+		var result = c.processCalc(daten, ergebnis);
+		return result;
 	};
 	ERValidator_sample_002epicus._instance = new ERValidator_sample_002epicus();
 	ERValidator_sample_002epicus._metaData = Meta_sample_002epicus.getInstance().getMetaDataValidierung();

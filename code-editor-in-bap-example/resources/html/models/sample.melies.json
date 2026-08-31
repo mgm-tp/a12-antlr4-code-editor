@@ -2,7 +2,7 @@
   "header": {
     "id": "sample.melies",
     "modelType": "form",
-    "modelVersion": "37.3.0",
+    "modelVersion": "38.0.0",
     "locales": [
       {
         "code": "en"
@@ -113,20 +113,17 @@
                             "value": "example"
                           }
                         ],
-                        "offset": {
-                          "lg": 0
-                        },
                         "label": {
                           "type": "Multilingual",
                           "multilingualText": {
                             "text": [
                               {
                                 "locale": "en",
-                                "text": "Code editor"
+                                "text": "Code editor 02"
                               },
                               {
                                 "locale": "de",
-                                "text": "Code-Editor"
+                                "text": "Code-Editor 02"
                               }
                             ]
                           }

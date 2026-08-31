@@ -30,3 +30,5 @@ yarn-error.log*
 /lib/**
 
 !/gradle/
+
+theming-e2e-*

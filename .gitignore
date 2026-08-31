@@ -40,6 +40,7 @@ target
 **/build
 deployment/src/main/helm/values.yaml
 **/zip
+deployment/resources/secrets/secrets.yaml
 
 # Sbom
 **/cyclonedx.json

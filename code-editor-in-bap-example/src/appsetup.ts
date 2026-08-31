@@ -9,15 +9,15 @@
  * a choice of two different licenses:
  *
  * 1. Open-Source License - EUPL v1.2
- * You may redistribute and/or modify this file under the terms of the
- * European Union Public License, version 1.2 - see https://eupl.eu/.
+ *    You may redistribute and/or modify this file under the terms of the
+ *    European Union Public License, version 1.2 - see https://eupl.eu/.
  *
  * 2. Commercial License
- * Alternatively, you may obtain a commercial license from
+ *    Alternatively, you may obtain a commercial license from
  *    mgm technology partners GmbH, that permits use of this software
- * under different terms (including support and maintenance services).
+ *    under different terms (including support and maintenance services).
  *
- * Please contact a12-license@mgm-tp.com for more information.
+ *    Please contact a12-license@mgm-tp.com for more information.
  *
  * You must select and comply with exactly one of the above license options.
  *
@@ -35,6 +35,7 @@ import { type Middleware } from "redux";
 import {
 	createDefaultMiddlewareOptions,
 	createFormEngineMiddlewares,
+	type EngineState,
 	formEngineDataReducers,
 	formEngineSagas,
 	FormModelProcessor,
@@ -49,18 +50,22 @@ import {
 	LocaleActions,
 	StoreFactories
 } from "@com.mgmtp.a12.client/client-core";
-import { type ICustomCondition } from "@com.mgmtp.a12.kernel/kernel-core-runtime-api-ts/a12internal";
 import {
 	getCodeEditorErrors,
 	getValidationState,
 	ValidationStatus
 } from "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-core";
 import { createHttpModelLoader } from "@com.mgmtp.a12.client/client-core/modelLoader";
-import { RtCustomExtensionService } from "@com.mgmtp.a12.kernel/kernel-md-facade/a12internal";
+import {
+	createCustomConditionFactory,
+	type GeneratedCodeRtConfig,
+	type ICustomCondition
+} from "@com.mgmtp.a12.kernel/kernel-md-facade";
 
 import { codeEditorDataLoader } from "./loaders/codeEditorDataLoader.js";
 import model from "./appmodel.json" with { type: "json" };
 import { isProduction } from "./config/index.js";
+import { getStringValue } from "./utils/document-utils.js";
 
 export function setup(): ApplicationSetup {
 	/**
@@ -70,10 +75,16 @@ export function setup(): ApplicationSetup {
 	 * - CodeEditorCondition: Execute the full validate of against the Antlr grammar
 	 * - ProjectConditionWarning, ProjectConditionError : The custom condition for demonstrate the combination of CodeEditor error and project validator
 	 */
-	const conditionsMap: Record<string, ICustomCondition> = {
+	const conditionsMap: { [conditionName: string]: ICustomCondition } = {
 		CodeEditorCondition: {
-			check(data, relevantEntities, formallyIncorrectFields, errorField) {
-				const fieldContent = data.getValue(errorField);
+			check(
+				document,
+				documentModelId,
+				relevantEntityInstances,
+				formallyIncorrectEntityInstances,
+				errorEntityInstance
+			) {
+				const fieldContent = getStringValue(document, errorEntityInstance);
 				if (fieldContent) {
 					const errors = getCodeEditorErrors("example");
 					return errors.length > 0;
@@ -83,8 +94,14 @@ export function setup(): ApplicationSetup {
 			}
 		},
 		CodeEditorPendingValidation: {
-			check(data, relevantEntities, formallyIncorrectFields, errorField) {
-				const fieldContent = data.getValue(errorField);
+			check(
+				document,
+				documentModelId,
+				relevantEntityInstances,
+				formallyIncorrectEntityInstances,
+				errorEntityInstance
+			) {
+				const fieldContent = getStringValue(document, errorEntityInstance);
 				if (fieldContent) {
 					const pendingValidations = getValidationState({
 						owner: "example",
@@ -97,8 +114,14 @@ export function setup(): ApplicationSetup {
 			}
 		},
 		ProjectConditionWarning: {
-			check(data, relevantEntities, formallyIncorrectFields, errorField) {
-				const fieldContent = data.getValue(errorField);
+			check(
+				document,
+				documentModelId,
+				relevantEntityInstances,
+				formallyIncorrectEntityInstances,
+				errorEntityInstance
+			) {
+				const fieldContent = getStringValue(document, errorEntityInstance);
 				if (fieldContent) {
 					const regex = ".*warning.*";
 					return new RegExp(regex, "m").test(fieldContent);
@@ -108,8 +131,14 @@ export function setup(): ApplicationSetup {
 			}
 		},
 		ProjectConditionError: {
-			check(data, relevantEntities, formallyIncorrectFields, errorField) {
-				const fieldContent = data.getValue(errorField);
+			check(
+				document,
+				documentModelId,
+				relevantEntityInstances,
+				formallyIncorrectEntityInstances,
+				errorEntityInstance
+			) {
+				const fieldContent = getStringValue(document, errorEntityInstance);
 				if (fieldContent) {
 					const regex = ".*error.*";
 					return new RegExp(regex, "m").test(fieldContent);
@@ -120,11 +149,11 @@ export function setup(): ApplicationSetup {
 		}
 	};
 
-	RtCustomExtensionService.registerCustomConditions({
-		createCustomCondition(name: string) {
-			return conditionsMap[name];
-		}
-	});
+	function kernelOptionsProvider(state: EngineState): GeneratedCodeRtConfig {
+		return {
+			customConditionFactory: createCustomConditionFactory(conditionsMap)
+		};
+	}
 
 	return ApplicationFactories.createApplicationSetup({
 		model: model as ApplicationModel,
@@ -135,7 +164,9 @@ export function setup(): ApplicationSetup {
 		customSagas: [...formEngineSagas({ attachmentLoader: platformAttachmentLoader })],
 		additionalMiddlewares: [
 			...createFormEngineMiddlewares({
-				...createDefaultMiddlewareOptions()
+				...createDefaultMiddlewareOptions({
+					kernelOptionsProvider
+				})
 			}),
 			devToolMiddleware()
 		],

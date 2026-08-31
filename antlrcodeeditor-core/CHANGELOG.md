@@ -7,13 +7,13 @@
 - [CodeEditor] = Changes in the Antlr code editor
 - [Dev] = General changes in the dev environment
 
+## [7.0.1 / 2026-08-17]
+### Changed
+* Fix security issues in 3rd dependencies
+
 ## [7.0.0 / 2026-04-28]
 ### Changed
 * A12 technical upgrade 2026.06 (Typescript, Java)
-
-## [6.2.1 / 2026-04-13]
-### Changed
-* OpenSource clean up
 
 ## [6.2.1 / 2026-04-13]
 ### Changed
