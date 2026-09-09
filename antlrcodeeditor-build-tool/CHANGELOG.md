@@ -1,4 +1,11 @@
 # Changelog
+## [6.2.4 / 2026-08-28]
+### Changed
+* Removed prepend-file to fix security issue
+
+### Bug fixes
+* Issue running the CLI from a folder with spaces in its name
+
 ## [6.2.1 / 2026-04-13]
 ### Changed
 * OpenSource clean up

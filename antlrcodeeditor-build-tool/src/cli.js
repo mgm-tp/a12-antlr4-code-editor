@@ -87,9 +87,9 @@ const getArgsList = argv => {
 	const { ANTLR_SRC, TARGET_DIR } = properties;
 	const propertiesWithAbsolutePath = {
 		...properties,
-		...(ANTLR_SRC && { ANTLR_SRC: path.resolve(ANTLR_SRC) }),
-		...(TARGET_DIR && { TARGET_DIR: path.resolve(TARGET_DIR) }),
-		GEN_JS_SRC: path.resolve(__dirname, "..", "gen", "grammar")
+		...(ANTLR_SRC && { ANTLR_SRC: `"${path.resolve(ANTLR_SRC)}"` }),
+		...(TARGET_DIR && { TARGET_DIR: `"${path.resolve(TARGET_DIR)}"` }),
+		GEN_JS_SRC: `"${path.resolve(__dirname, "..", "gen", "grammar")}"`
 	};
 
 	const initScript = gradleParams[paramKeys.INIT_SCRIPT];
@@ -117,7 +117,7 @@ const spawnGradleCommand = argv => {
 		gradleExecutable = path.resolve(gradleWrapperPath, "gradlew");
 	}
 
-	spawnSync(gradleExecutable, gradleArgsList, {
+	spawnSync(`"${gradleExecutable}"`, gradleArgsList, {
 		cwd: executionDir,
 		stdio: "inherit",
 		shell: true

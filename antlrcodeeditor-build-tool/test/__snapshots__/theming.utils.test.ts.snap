@@ -1,0 +1,75 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getAllPossibleTokens > filters null entries and maps to token names 1`] = `
+[
+  "keyword.testlang",
+  "identifier.testlang",
+  "string_literal.testlang",
+  "number.testlang",
+]
+`;
+
+exports[`getAllPossibleTokens > returns empty array for lexer with no symbolic names 1`] = `[]`;
+
+exports[`getTheming > always includes UNNAMED token rule 1`] = `
+[
+  {
+    "foreground": "000000",
+    "token": "UNNAMED.testlang",
+  },
+]
+`;
+
+exports[`getTheming > produces correct theme structure 1`] = `
+{
+  "base": "vs",
+  "colors": {},
+  "inherit": true,
+  "rules": [
+    {
+      "foreground": "0000ff",
+      "token": "keyword.testlang",
+    },
+    {
+      "foreground": "0000ff",
+      "token": "identifier.testlang",
+    },
+    {
+      "foreground": "0000ff",
+      "token": "string_literal.testlang",
+    },
+    {
+      "foreground": "0000ff",
+      "token": "number.testlang",
+    },
+    {
+      "foreground": "000000",
+      "token": "UNNAMED.testlang",
+    },
+  ],
+}
+`;
+
+exports[`getTokenName > handles mixed case rule names 1`] = `"string_literal.testlang"`;
+
+exports[`getTokenName > lowercases rule name and appends language 1`] = `"keyword.testlang"`;
+
+exports[`stringify > formats object with unquoted keys 1`] = `
+"{
+	base: "vs",
+	inherit: true,
+	rules: []
+}"
+`;
+
+exports[`stringify > handles nested objects 1`] = `
+"{
+	colors: {},
+	rules: [
+		{
+			token: "keyword",
+			foreground: "0000ff"
+		}
+	]
+}"
+`;

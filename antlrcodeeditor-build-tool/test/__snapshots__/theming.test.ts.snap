@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`theming.ts end-to-end > with valid inputs > writes index.ts with correct imports and exports 1`] = `
+"import MockLexer from "./MockLexer.js";
+import MockParser from "./MockParser.js";
+import { theme } from "./testlang.theme.js";
+
+export {MockLexer, MockParser, theme}
+"
+`;
+
+exports[`theming.ts end-to-end > with valid inputs > writes theme file with correct structure 1`] = `
+"import { IStandaloneThemeData } from "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-core";
+
+export const theme: IStandaloneThemeData = {
+	base: "vs",
+	inherit: true,
+	rules: [
+		{
+			token: "keyword.testlang",
+			foreground: "0000ff"
+		},
+		{
+			token: "identifier.testlang",
+			foreground: "0000ff"
+		},
+		{
+			token: "string_literal.testlang",
+			foreground: "0000ff"
+		},
+		{
+			token: "UNNAMED.testlang",
+			foreground: "000000"
+		}
+	],
+	colors: {}
+};
+"
+`;

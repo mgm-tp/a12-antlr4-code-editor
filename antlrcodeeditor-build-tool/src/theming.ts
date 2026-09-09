@@ -34,7 +34,7 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
-import prependFile from "prepend-file";
+import { getTheming, stringify } from "./theming.utils.js";
 
 const LEXER_NAME = process.env.LEXER_NAME;
 const PARSER_NAME = process.env.PARSER_NAME;
@@ -44,11 +44,7 @@ const OUTPUT_DIR = process.env.OUTPUT_DIR;
 
 const lexerName = LEXER_NAME || `${GRAMMAR_FILE}Lexer`;
 const parserName = PARSER_NAME || `${GRAMMAR_FILE}Parser`;
-const language = LANGUAGE;
-
-function stringify(jsObj: object): string {
-	return JSON.stringify(jsObj, null, "\t").replace(/"(\w+)":/g, "$1:");
-}
+const language = LANGUAGE ?? "";
 
 if (!OUTPUT_DIR) {
 	throw new Error("Output directory is missing");
@@ -64,40 +60,11 @@ const normalizeImportPath = (...paths: string[]): string => {
 import(normalizeImportPath(OUTPUT_DIR, `${lexerName}.ts`)).then(module => {
 	const lexer = module.default;
 
-	function getAllPossibleTokens(lexer: any): string[] {
-		return lexer.symbolicNames.filter(Boolean).map(getTokenName);
-	}
-
-	function getTokenName(ruleName: string): string {
-		return `${ruleName.toLowerCase()}.${language}`;
-	}
-
-	function getTheming(lexer: any) {
-		const allPossibleTokens = getAllPossibleTokens(lexer);
-		const rules = allPossibleTokens.map(token => ({
-			token,
-			foreground: "0000ff"
-		}));
-
-		// Some languages rules contain unnamed token
-		rules.push({
-			token: `UNNAMED.${language}`,
-			foreground: "000000"
-		});
-
-		return {
-			base: "vs", // "vs" | "vs-dark" | "hc-black"
-			inherit: true,
-			rules,
-			colors: {} // leave blank for now
-		};
-	}
-
 	// region Write theming file
 	const themingFile = `
 import { IStandaloneThemeData } from "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-core";
 
-export const theme: IStandaloneThemeData = ${stringify(getTheming(lexer))};
+export const theme: IStandaloneThemeData = ${stringify(getTheming(lexer, language))};
 `.slice(1);
 	fs.writeFileSync(`${OUTPUT_DIR}/${language}.theme.ts`, themingFile);
 	// endregion
@@ -114,7 +81,9 @@ export {${lexerName}, ${parserName}, theme}
 fs.writeFileSync(`${OUTPUT_DIR}/index.ts`, indexFile);
 // endregion
 
-// region Write Parser and Lexer file to ignore typescript and eslint checking
-prependFile.sync(`${OUTPUT_DIR}/${lexerName}.ts`, "// @ts-nocheck ignore check\n/* eslint-disable */\n");
-prependFile.sync(`${OUTPUT_DIR}/${parserName}.ts`, "// @ts-nocheck ignore check\n/* eslint-disable */\n");
+// region Write Parser and Lexer file to ignore TypeScript and Eslint checking
+const header = "// @ts-nocheck ignore check\n/* eslint-disable */\n";
+[`${OUTPUT_DIR}/${lexerName}.ts`, `${OUTPUT_DIR}/${parserName}.ts`].forEach(file => {
+	fs.writeFileSync(file, header + fs.readFileSync(file, "utf8"));
+});
 // endregion

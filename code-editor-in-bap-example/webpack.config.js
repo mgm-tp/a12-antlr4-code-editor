@@ -63,18 +63,13 @@ export default (env = { profile: "prod" }, { mode }) => {
 
 	const devServer = {
 		hot: true,
-		port: 8080,
+		port: 8081,
 		static: [
 			// Makes resources models available
 			Path.join(__dirname, "resources", "html", "models")
 		],
 		client: {
 			overlay: false
-		},
-		onBeforeSetupMiddleware({ app }) {
-			app.use("/static", function (req, res, next) {
-				next();
-			});
 		}
 	};
 
@@ -99,6 +94,13 @@ export default (env = { profile: "prod" }, { mode }) => {
 					test: /\.js$/,
 					enforce: "pre",
 					use: ["source-map-loader"]
+				},
+				{
+					test: /\.m?js$/,
+					include: /node_modules/,
+					resolve: {
+						fullySpecified: false
+					}
 				},
 				{
 					test: /\.css$/,
@@ -130,11 +132,10 @@ export default (env = { profile: "prod" }, { mode }) => {
 		},
 		optimization: {
 			minimizer: [
-				isProduction &&
-					new TerserPlugin({
-						exclude: /sample\.picus\.validation\.js/
-					})
-			].filter(Boolean),
+				new TerserPlugin({
+					exclude: /sample\.picus\.validation\.js$/
+				})
+			],
 			splitChunks: {
 				chunks: "all",
 				maxInitialRequests: Infinity,
