@@ -132,10 +132,11 @@ export default (env = { profile: "prod" }, { mode }) => {
 		},
 		optimization: {
 			minimizer: [
-				new TerserPlugin({
-					exclude: /sample\.picus\.validation\.js$/
-				})
-			],
+				isProduction &&
+					new TerserPlugin({
+						exclude: /sample\.picus\.validation\.js$/
+					})
+			].filter(Boolean),
 			splitChunks: {
 				chunks: "all",
 				maxInitialRequests: Infinity,

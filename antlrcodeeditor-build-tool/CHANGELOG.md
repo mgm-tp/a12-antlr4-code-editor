@@ -1,5 +1,8 @@
 # Changelog
 
+## [7.1.0 / 2026-10-27]
+* No changes
+
 ## [7.0.1 / 2026-08-17]
 ### Changed
 * Removed prepend-file to fix security issue

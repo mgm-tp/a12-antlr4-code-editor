@@ -1,0 +1,133 @@
+/**
+ * This gradle script provides tasks for copying, converting and migrating models found in this folder
+ * and uses the name schema of the platform server.
+ *
+ * * `Domain<Name>.json` => `../../target/models/Domain<Name>.json`
+ * * `Domain<Name>.json` => `../../target/models/Domain<Name>.validation.js`
+ * * `<Name>.json` => `../../target/models/<Name>.json`
+ * * `<Name>-overview.json` => `../../target/models/<Name>-overview.json`
+ */
+
+buildscript {
+	ext {
+		Closure<String> getNodeVersion = { new JsonSlurper().parse(project.file("../node_modules/${it}/package.json")).version }
+
+		dependencyVersions = [
+			a12: [
+				kernel        : getNodeVersion("@com.mgmtp.a12.kernel/kernel-md-facade"),
+				services      : getNodeVersion("@com.mgmtp.a12.dataservices/dataservices-access")
+			]
+		]
+
+		println "The following product versions"
+		println "Kernel:           " + dependencyVersions.a12.kernel
+		println "Services:         " + dependencyVersions.a12.services
+	}
+}
+
+plugins {
+	id 'java'
+}
+
+
+import groovy.json.JsonSlurper
+
+configurations {
+	form.extendsFrom runtimeOnly
+	overview.extendsFrom runtimeOnly
+}
+
+dependencies {
+	runtimeOnly "com.mgmtp.a12.kernel:kernel-md-model:${dependencyVersions.a12.kernel}"
+	runtimeOnly "com.mgmtp.a12.kernel:kernel-md-facade:${dependencyVersions.a12.kernel}"
+	runtimeOnly "com.mgmtp.a12.kernel:kernel-tool-model-migration:${dependencyVersions.a12.kernel}"
+}
+
+configurations {
+	runtimeOnly.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+}
+
+static boolean isDocumentModel(File file) {
+	boolean returnType = false
+	if (file.name.endsWith('.json')) {
+		for (String line in file.readLines()) {
+			if (line.contains('"modelType"')) {
+				if (line.contains('"document"')) {
+					returnType = true
+					break
+				} else {
+					returnType = false
+					break
+				}
+			}
+		}
+	}
+	return returnType
+}
+
+static String getFileName(File file) {
+	return file.name.take(file.name.lastIndexOf('.'))
+}
+
+def targetFolder = "../resources/html/models";
+
+task _clean(type: Delete) {
+	delete file("${projectDir.path}/${targetFolder}")
+}
+clean.dependsOn(_clean)
+
+task convertValidation(type: JavaExec) {
+
+	classpath sourceSets.main.runtimeClasspath
+	mainClass = 'com.mgmtp.a12.kernel.md.model.a12internal.services.codegen.cli.BatchVkValidationCodeGeneratorJs'
+
+	args "-w"
+	args "${projectDir}"
+
+	fileTree(dir: ".", include: '**/*.json')
+		.filter({ file -> isDocumentModel(file) })
+		.each { documentModelFile ->
+			File outputFile = file("${targetFolder}/${getFileName(documentModelFile)}.validation.js")
+			inputs.file documentModelFile
+			outputs.file outputFile
+			args documentModelFile.path
+			args outputFile.path
+		}
+}
+
+task expandIncludes(type: JavaExec) {
+
+	dependsOn 'copyModels'
+
+	classpath sourceSets.main.runtimeClasspath
+	mainClass = 'com.mgmtp.a12.kernel.md.facade.cli.BatchDocumentModelExpander'
+
+	args "${projectDir}"
+
+	fileTree(dir: ".", include: '**/*.json')
+		.filter({ file -> isDocumentModel(file) })
+		.each { documentModelFile ->
+			File outputFile = file("${targetFolder}/${getFileName(documentModelFile)}.json")
+			inputs.file documentModelFile
+			outputs.file outputFile
+			args documentModelFile.path
+			args outputFile.path
+		}
+}
+
+task copyModels(type: Copy) {
+	from('.') {
+		include '**/*.json'
+	}
+
+	eachFile {
+		path = name
+	}
+	includeEmptyDirs = false
+
+	into file("${targetFolder}")
+}
+
+task convert {
+	dependsOn 'convertValidation', 'copyModels', 'expandIncludes'
+}

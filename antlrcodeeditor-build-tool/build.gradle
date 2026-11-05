@@ -1,0 +1,176 @@
+/*
+ * SPDX-License-Identifier: EUPL-1.2 OR LicenseRef-commercial
+ *
+ * Copyright (c) 2012-2026 mgm technology partners GmbH
+ *
+ * Dual License
+ * ------------
+ * This source file is part of the mgm A12 Platform and available under
+ * a choice of two different licenses:
+ *
+ * 1. Open-Source License - EUPL v1.2
+ *    You may redistribute and/or modify this file under the terms of the
+ *    European Union Public License, version 1.2 - see https://eupl.eu/.
+ *
+ * 2. Commercial License
+ *    Alternatively, you may obtain a commercial license from
+ *    mgm technology partners GmbH, that permits use of this software
+ *    under different terms (including support and maintenance services).
+ *
+ *    Please contact a12-license@mgm-tp.com for more information.
+ *
+ * You must select and comply with exactly one of the above license options.
+ *
+ * Warranty Disclaimer (applies to either option)
+ * ----------------------------------------------
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND,
+ * WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
+ * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
+ */
+plugins {
+	id "com.github.node-gradle.node" version "3.6.0"
+}
+
+apply plugin: 'java'
+
+def ANTLR_SRC =  project.hasProperty('ANTLR_SRC') ? project.property('ANTLR_SRC') : "."
+def LEXER_NAME = project.hasProperty('LEXER_NAME') ? project.property('LEXER_NAME') : ""
+def PARSER_NAME = project.hasProperty('PARSER_NAME') ? project.property('PARSER_NAME') : ""
+def LANGUAGE = project.hasProperty('LANGUAGE') ? project.property('LANGUAGE') : ""
+def GEN_JS_SRC = project.hasProperty('GEN_JS_SRC') ? project.property('GEN_JS_SRC') : "gen/grammar"
+def TARGET_DIR = project.hasProperty('TARGET_DIR') ? project.property('TARGET_DIR') : "."
+
+def BASE_LEXER_NAME = project.hasProperty('BASE_LEXER_NAME') ? project.property('BASE_LEXER_NAME') : ""
+def BASE_PARSER_NAME = project.hasProperty('BASE_PARSER_NAME') ? project.property('BASE_PARSER_NAME'): ""
+def GRAMMAR_FILE = project.hasProperty('GRAMMAR_FILE') ? project.property('GRAMMAR_FILE') : "."
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	runtimeOnly 'org.antlr:antlr4:4.13.0'
+}
+
+tasks.register("cleanDir", NpmTask) {
+	args = ["run", "clean"]
+}
+
+tasks.register("generateLexer", JavaExec) {
+	outputs.upToDateWhen { false } // Prevent the cache
+
+	inputs.file("${ANTLR_SRC}/${LEXER_NAME}.g4")
+	outputs.file("${GEN_JS_SRC}/${LEXER_NAME}.js")
+	outputs.file("${GEN_JS_SRC}/${LEXER_NAME}.interp")
+	outputs.file("${GEN_JS_SRC}/${LEXER_NAME}.tokens")
+	mainClass.set('org.antlr.v4.Tool')
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['-Dlanguage=TypeScript', "${LEXER_NAME}.g4", '-o', new File(GEN_JS_SRC).absolutePath]
+	workingDir = ANTLR_SRC
+}
+
+tasks.register("generateParser", JavaExec) {
+	outputs.upToDateWhen { false } // Prevent the cache
+
+	inputs.file("${ANTLR_SRC}/${PARSER_NAME}.g4")
+	inputs.file("${GEN_JS_SRC}/${LEXER_NAME}.tokens")
+	outputs.file("${GEN_JS_SRC}/${PARSER_NAME}.js")
+	outputs.file("${GEN_JS_SRC}/${PARSER_NAME}.interp")
+	outputs.file("${GEN_JS_SRC}/${PARSER_NAME}.tokens")
+	mainClass.set('org.antlr.v4.Tool')
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['-Dlanguage=TypeScript', "${PARSER_NAME}.g4", '-no-listener', '-no-visitor', '-o', new File(GEN_JS_SRC).absolutePath]
+	workingDir = ANTLR_SRC
+}
+
+// Workaround for https://github.com/antlr/antlr4/issues/4905
+tasks.register("fixGeneratedImports") {
+	doLast {
+		fileTree(dir: GEN_JS_SRC, include: '*.ts').each { File file ->
+			def content = file.text
+			// DecisionState is only used as a type annotation in generated ANTLR code,
+			// but antlr4@4.13.2 does not export it as a named ESM export.
+			// Remove it from the value import and replace the type annotation with 'any'.
+			if (content.contains('DecisionState')) {
+				// Remove from import { ..., DecisionState, ... }
+				content = content.replaceAll(/(\bimport\s*\{[^}]*)DecisionState,\s*/, '$1')
+				// Replace type annotation (ds: DecisionState, ...) with (ds: any, ...)
+				content = content.replaceAll(/\(ds:\s*DecisionState,/, '(ds: any,')
+				file.text = content
+			}
+		}
+	}
+}
+
+tasks.register("generateESMFiles", Copy) {
+	from "${GEN_JS_SRC}"
+	into "${GEN_JS_SRC}"
+	include "*.js"
+	rename {String filename -> filename.replace(".js", ".mjs")}
+}
+
+tasks.register("generateTheming", NpmTask) {
+	environment = [
+		'LEXER_NAME': LEXER_NAME,
+		'PARSER_NAME': PARSER_NAME,
+		"GRAMMAR_FILE": GRAMMAR_FILE,
+		'LANGUAGE': LANGUAGE,
+		'OUTPUT_DIR': GEN_JS_SRC
+	]
+	args = ["run", "theming"]
+}
+
+tasks.register("copyToTargetDir", Copy) {
+	from "${GEN_JS_SRC}"
+	include "*.js"
+	include "*.ts"
+	into "${TARGET_DIR}"
+}
+
+tasks.register("runBuildTool") {
+	dependsOn cleanDir, generateLexer, generateParser, fixGeneratedImports, generateESMFiles, generateTheming, copyToTargetDir
+}
+
+// region Support for grammars that require Base classes
+tasks.register("copyBaseClassesToLib", Copy) {
+	from "${ANTLR_SRC}"
+	include "${BASE_LEXER_NAME}.js"
+	include "${BASE_PARSER_NAME}.js"
+	into "${GEN_JS_SRC}"
+}
+
+tasks.register("runBuildToolWithBaseClassesSupport") {
+	dependsOn cleanDir, generateLexer, generateParser, fixGeneratedImports, copyBaseClassesToLib, generateTheming, copyToTargetDir
+}
+// endregion Support for grammars that require Base classes
+
+// region Support for grammars that have only 1 single grammar file
+tasks.register("generateLexerAndParser", JavaExec) {
+	mainClass.set('org.antlr.v4.Tool')
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['-Dlanguage=TypeScript', "${GRAMMAR_FILE}.g4", '-no-listener', '-no-visitor', '-o', new File(GEN_JS_SRC).absolutePath]
+	workingDir = ANTLR_SRC
+}
+
+tasks.register("runBuildToolWithSingleGrammarFileSupport") {
+	dependsOn cleanDir, generateLexerAndParser, fixGeneratedImports, generateTheming, copyToTargetDir
+}
+// endregion
+
+copyToTargetDir.mustRunAfter generateTheming
+
+generateTheming.mustRunAfter generateESMFiles
+generateESMFiles.mustRunAfter fixGeneratedImports
+fixGeneratedImports.mustRunAfter generateParser
+generateParser.mustRunAfter generateLexer
+generateLexer.mustRunAfter cleanDir
+generateParser.mustRunAfter cleanDir
+
+generateTheming.mustRunAfter copyBaseClassesToLib
+copyBaseClassesToLib.mustRunAfter generateParser
+
+generateTheming.mustRunAfter fixGeneratedImports
+fixGeneratedImports.mustRunAfter generateLexerAndParser
+generateLexerAndParser.mustRunAfter cleanDir

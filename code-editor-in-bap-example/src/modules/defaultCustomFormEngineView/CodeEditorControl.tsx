@@ -30,11 +30,12 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import { type JSX, type ReactNode, useContext, useRef, useState } from "react";
+import { type JSX, type ReactNode, useContext, useState } from "react";
 import { useTheme } from "styled-components";
 import * as monaco from "monaco-editor";
 import { editor } from "monaco-editor";
 
+import { LocalizerContext } from "@com.mgmtp.a12.utils/utils-localization-react";
 import {
 	AntlrCodeEditor,
 	CommonTokensProvider,
@@ -44,7 +45,6 @@ import {
 } from "@com.mgmtp.a12.antlrcodeeditor/antlrcodeeditor-core";
 import { DataSelectors, FormModelPath, UiStateSelectors } from "@com.mgmtp.a12.formengine/formengine-core";
 import { DocumentServiceFactory, type GroupInstance } from "@com.mgmtp.a12.kernel/kernel-md-facade";
-import { LocalizerContext } from "@com.mgmtp.a12.utils/utils-localization-react";
 import {
 	addPrefix,
 	InputElements,
@@ -64,15 +64,11 @@ import { type ExtendedConfig } from "./DefaultCustomFormEngineView.js";
 
 import EndOfLineSequence = editor.EndOfLineSequence;
 
-type IStandaloneCodeEditor = editor.IStandaloneCodeEditor;
-
 const CodeEditorControl = (props: TextAreaStatelessProps): JSX.Element => {
 	const {
 		modelElement,
 		config: { renderOptions, parentPath }
 	} = useFormModelMapContext();
-	const editorRef = useRef<IStandaloneCodeEditor | null>(null);
-
 	const languageName = modelElement.annotations?.[0].value || "";
 	const customConfig = renderOptions.config as ExtendedConfig;
 	const antlrConfig: IAntlrConfig = customConfig.antlrConfig;
@@ -152,10 +148,6 @@ const CodeEditorControl = (props: TextAreaStatelessProps): JSX.Element => {
 	const warningLocalizableMessages = warningMessagesForElement.map(m => m.errorText || m.errorKey);
 	const warningMessages = warningLocalizableMessages.map(localizables => localizer(...localizables) ?? "");
 
-	const handleFocus = (): void => {
-		editorRef.current?.focus();
-	};
-
 	// AntlrCodeEditor props
 	const codeCompletionShortcut = (): number => monaco?.KeyMod.Shift | monaco?.KeyCode.Space;
 
@@ -170,10 +162,6 @@ const CodeEditorControl = (props: TextAreaStatelessProps): JSX.Element => {
 			);
 		}
 		return <div>{messages}</div>;
-	};
-
-	const editorOnMount = (editor: IStandaloneCodeEditor): void => {
-		editorRef.current = editor;
 	};
 
 	const externalErrorsService = new ExternalErrorsService(applyDefaultTranslations(localizer));
@@ -202,9 +190,7 @@ const CodeEditorControl = (props: TextAreaStatelessProps): JSX.Element => {
 				)}
 				<StyledBaseInput.StyledFieldInput
 					style={{ height: "auto" }}
-					id={props.id}
 					tabIndex={-1}
-					onFocus={handleFocus}
 					data-role={"text-output"}
 					$readonly={uiConfig?.options?.readOnly}
 					$error={errorMessages.length > 0}
@@ -212,6 +198,11 @@ const CodeEditorControl = (props: TextAreaStatelessProps): JSX.Element => {
 					$hasFocus={isEditorFocused}
 				>
 					<AntlrCodeEditor
+						/*
+						 * Let the form engine's "go to issue" navigation find and focus the editor's
+						 * real input: it looks up elements whose id starts with this field's id.
+						 */
+						id={props.id}
 						tokensProvider={tokensProvider}
 						getSuggestions={getSuggestions}
 						languageConfiguration={configuration}
@@ -233,7 +224,6 @@ const CodeEditorControl = (props: TextAreaStatelessProps): JSX.Element => {
 						loading={<ProgressIndicator size="big" />}
 						onFocus={setIsEditorFocused}
 						onEditorInitFailed={setInitEditorError}
-						onMount={editorOnMount}
 						monacoLoader={{
 							path: "vs",
 							availableLanguages: {

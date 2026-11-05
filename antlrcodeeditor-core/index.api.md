@@ -19,58 +19,58 @@ import { ReactNode } from 'react';
 //
 // @public
 export class AntlrCodeEditor extends Component<IAntlrCodeEditorProps & ICustomLanguageConfiguration & EditorProps, IAntlrCodeEditorState> {
-	constructor(props: IAntlrCodeEditorProps & ICustomLanguageConfiguration & EditorProps);
-	// (undocumented)
-	componentDidMount(): Promise<void>;
-	// (undocumented)
-	componentDidUpdate(prevProps: Readonly<IAntlrCodeEditorProps & ICustomLanguageConfiguration & EditorProps>): void;
-	// (undocumented)
-	componentWillUnmount: () => void;
-	// (undocumented)
-	static defaultProps: {
-		delayFetchExternalErrors: number;
-	};
-	// (undocumented)
-	editorBeforeMount: () => void;
-	// Warning: (ae-forgotten-export) The symbol "IStandaloneCodeEditor" needs to be exported by the entry point index.d.ts
-	//
-	// (undocumented)
-	editorOnMount: (editor: IStandaloneCodeEditor, monaco: Monaco) => Promise<void>;
-	// (undocumented)
-	render: () => ReactNode;
+    constructor(props: IAntlrCodeEditorProps & ICustomLanguageConfiguration & EditorProps);
+    // (undocumented)
+    componentDidMount(): Promise<void>;
+    // (undocumented)
+    componentDidUpdate(prevProps: Readonly<IAntlrCodeEditorProps & ICustomLanguageConfiguration & EditorProps>): void;
+    // (undocumented)
+    componentWillUnmount: () => void;
+    // (undocumented)
+    static defaultProps: {
+        delayFetchExternalErrors: number;
+    };
+    // (undocumented)
+    editorBeforeMount: () => void;
+    // Warning: (ae-forgotten-export) The symbol "IStandaloneCodeEditor" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    editorOnMount: (editor: IStandaloneCodeEditor, monaco: Monaco) => Promise<void>;
+    // (undocumented)
+    render: () => ReactNode;
 }
 
 // @public (undocumented)
 export class CodeCompletionProvider implements monaco.languages.CompletionItemProvider {
-	constructor(modelId: string, suggestions: ISuggestion[]);
-	provideCompletionItems: (model: monaco.editor.ITextModel, position: monaco.Position, context: monaco.languages.CompletionContext, cancellationToken: monaco.CancellationToken) => monaco.languages.ProviderResult<monaco.languages.CompletionList>;
+    constructor(modelId: string, suggestions: ISuggestion[]);
+    provideCompletionItems: (model: monaco.editor.ITextModel, position: monaco.Position, context: monaco.languages.CompletionContext, cancellationToken: monaco.CancellationToken) => monaco.languages.ProviderResult<monaco.languages.CompletionList>;
 }
 
 // Warning: (ae-forgotten-export) The symbol "TokensProvider" needs to be exported by the entry point index.d.ts
 //
 // @public
 export class CommonTokensProvider implements TokensProvider {
-	constructor(props: ICommonTokensProviderProps);
-	// (undocumented)
-	dictionary: IAntlrDictionary;
-	getAllPossibleKeywords: () => IAntlrDictionary;
-	getAllTokens: (input: string) => ITokenForAsyncContextAssist[];
-	// Warning: (ae-forgotten-export) The symbol "IState" needs to be exported by the entry point index.d.ts
-	//
-	// (undocumented)
-	getInitialState: () => IState;
-	// (undocumented)
-	getLanguageName: () => string;
-	// Warning: (ae-forgotten-export) The symbol "ILineTokens" needs to be exported by the entry point index.d.ts
-	tokenize: (line: string, state: IState) => ILineTokens;
-	validate: (input: string) => ValidationError[];
+    constructor(props: ICommonTokensProviderProps);
+    // (undocumented)
+    dictionary: IAntlrDictionary;
+    getAllPossibleKeywords: () => IAntlrDictionary;
+    getAllTokens: (input: string) => ITokenForAsyncContextAssist[];
+    // Warning: (ae-forgotten-export) The symbol "IState" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    getInitialState: () => IState;
+    // (undocumented)
+    getLanguageName: () => string;
+    // Warning: (ae-forgotten-export) The symbol "ILineTokens" needs to be exported by the entry point index.d.ts
+    tokenize: (line: string, state: IState) => ILineTokens;
+    validate: (input: string) => ValidationError[];
 }
 
 // @public (undocumented)
 export class ContextAssistFunctionalityProvider implements monaco.languages.CompletionItemProvider {
-	constructor(modelId: string, tokensProvider: CommonTokensProvider, fetchContextAssist: (currentTokenStream: ITokenForAsyncContextAssist[], cursorPosition: monaco.Position) => Promise<IAsyncSuggestion[]>);
-	// (undocumented)
-	provideCompletionItems: (model: monaco.editor.ITextModel, position: monaco.Position, context: monaco.languages.CompletionContext, cancellationToken: monaco.CancellationToken) => monaco.languages.ProviderResult<monaco.languages.CompletionList>;
+    constructor(modelId: string, tokensProvider: CommonTokensProvider, fetchContextAssist: (currentTokenStream: ITokenForAsyncContextAssist[], cursorPosition: monaco.Position) => Promise<IAsyncSuggestion[]>);
+    // (undocumented)
+    provideCompletionItems: (model: monaco.editor.ITextModel, position: monaco.Position, context: monaco.languages.CompletionContext, cancellationToken: monaco.CancellationToken) => monaco.languages.ProviderResult<monaco.languages.CompletionList>;
 }
 
 // Warning: (ae-forgotten-export) The symbol "IMarkerData" needs to be exported by the entry point index.d.ts
@@ -86,42 +86,43 @@ export const getValidationState: (filter?: Partial<IValidationState>) => IValida
 
 // @public
 export interface IAntlrCodeEditorLocalizedResourceBundle {
-	// Warning: (ae-forgotten-export) The symbol "AntlrCodeEditorResourceBundle" needs to be exported by the entry point index.d.ts
-	//
-	// (undocumented)
-	[lang: string]: AntlrCodeEditorResourceBundle;
+    // Warning: (ae-forgotten-export) The symbol "AntlrCodeEditorResourceBundle" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    [lang: string]: AntlrCodeEditorResourceBundle;
 }
 
 // @public
 export interface IAntlrCodeEditorProps {
-	codeCompletionShortcut?: () => number;
-	// Warning: (ae-forgotten-export) The symbol "ITextModel" needs to be exported by the entry point index.d.ts
-	// Warning: (ae-forgotten-export) The symbol "CompletionItemProvider" needs to be exported by the entry point index.d.ts
-	customCompletionProvider?(editorModel: ITextModel): CompletionItemProvider;
-	delayFetchExternalErrors?: number;
-	// Warning: (ae-forgotten-export) The symbol "editor" needs to be exported by the entry point index.d.ts
-	endOfLinePreference?: EndOfLineSequence;
-	fetchContextAssistFunctionality?(currentTokenStream: ITokenForAsyncContextAssist[], cursorPosition: monaco.Position): Promise<IAsyncSuggestion[]>;
-	fetchExternalErrors?(input: string): Promise<ValidationError[]>;
-	fetchHelpTextSupport?(currentTokenStream: ITokenForAsyncContextAssist[], cursorPosition: monaco.Position): Promise<monaco.IMarkdownString[]>;
-	initializationErrorMessage?: ReactNode;
-	markExternalErrorsRef?: MutableRefObject<(() => void) | null>;
-	// Warning: (ae-forgotten-export) The symbol "IMonacoLoaderProps" needs to be exported by the entry point index.d.ts
-	monacoLoader?: IMonacoLoaderProps;
-	onEditorInitFailed?(error: Error): void;
-	onFocus?: (isFocused: boolean) => void;
-	onValueSubmit?(changedValue: string): void;
-	uiConfig?: IMonacoEditorUIConfig;
+    codeCompletionShortcut?: () => number;
+    // Warning: (ae-forgotten-export) The symbol "ITextModel" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "CompletionItemProvider" needs to be exported by the entry point index.d.ts
+    customCompletionProvider?(editorModel: ITextModel): CompletionItemProvider;
+    delayFetchExternalErrors?: number;
+    // Warning: (ae-forgotten-export) The symbol "editor" needs to be exported by the entry point index.d.ts
+    endOfLinePreference?: EndOfLineSequence;
+    fetchContextAssistFunctionality?(currentTokenStream: ITokenForAsyncContextAssist[], cursorPosition: monaco.Position): Promise<IAsyncSuggestion[]>;
+    fetchExternalErrors?(input: string): Promise<ValidationError[]>;
+    fetchHelpTextSupport?(currentTokenStream: ITokenForAsyncContextAssist[], cursorPosition: monaco.Position): Promise<monaco.IMarkdownString[]>;
+    id?: string;
+    initializationErrorMessage?: ReactNode;
+    markExternalErrorsRef?: MutableRefObject<(() => void) | null>;
+    // Warning: (ae-forgotten-export) The symbol "IMonacoLoaderProps" needs to be exported by the entry point index.d.ts
+    monacoLoader?: IMonacoLoaderProps;
+    onEditorInitFailed?(error: Error): void;
+    onFocus?: (isFocused: boolean) => void;
+    onValueSubmit?(changedValue: string): void;
+    uiConfig?: IMonacoEditorUIConfig;
 }
 
 // @public
 export interface IAntlrConfig {
-	getSuggestions?(): Promise<ISuggestion[]>;
-	lexer: ILexerConstructor;
-	parser: IParserConstructor;
-	rootRuleName: string;
-	theme?: IStandaloneThemeData;
-	uiConfig?: IMonacoEditorUIConfig;
+    getSuggestions?(): Promise<ISuggestion[]>;
+    lexer: ILexerConstructor;
+    parser: IParserConstructor;
+    rootRuleName: string;
+    theme?: IStandaloneThemeData;
+    uiConfig?: IMonacoEditorUIConfig;
 }
 
 // @public
@@ -129,61 +130,61 @@ export type IAntlrDictionary = IAntlrVocabulary[];
 
 // @public
 export interface IAntlrProps {
-	// (undocumented)
-	antlrConfig: IAntlrConfig;
+    // (undocumented)
+    antlrConfig: IAntlrConfig;
 }
 
 // @public
 export interface IAntlrVocabulary {
-	text: string;
-	token: string;
-	tokenType: number;
+    text: string;
+    token: string;
+    tokenType: number;
 }
 
 // @public (undocumented)
 export interface IAsyncSuggestion {
-	kind?: monaco.languages.CompletionItemKind;
-	text: string;
+    kind?: monaco.languages.CompletionItemKind;
+    text: string;
 }
 
 // @public
 export interface ICommonTokensProviderProps {
-	disabledDefaultGrammarValidation?: boolean;
-	// (undocumented)
-	errorTemplates?: AntlrCodeEditorResourceBundle;
-	language: string;
-	lexer: ILexerConstructor;
-	parser: IParserConstructor;
-	rootRuleName: string;
+    disabledDefaultGrammarValidation?: boolean;
+    // (undocumented)
+    errorTemplates?: AntlrCodeEditorResourceBundle;
+    language: string;
+    lexer: ILexerConstructor;
+    parser: IParserConstructor;
+    rootRuleName: string;
 }
 
 // @public
 export interface ICustomLanguageConfiguration {
-	customTheme?: IStandaloneThemeData;
-	getSuggestions?(): Promise<ISuggestion[]>;
-	// Warning: (ae-forgotten-export) The symbol "LanguageConfiguration_2" needs to be exported by the entry point index.d.ts
-	languageConfiguration?: LanguageConfiguration_2;
-	tokensProvider: CommonTokensProvider;
+    customTheme?: IStandaloneThemeData;
+    getSuggestions?(): Promise<ISuggestion[]>;
+    // Warning: (ae-forgotten-export) The symbol "LanguageConfiguration_2" needs to be exported by the entry point index.d.ts
+    languageConfiguration?: LanguageConfiguration_2;
+    tokensProvider: CommonTokensProvider;
 }
 
 // @public (undocumented)
 export interface ILexerConstructor {
-	// (undocumented)
-	new (chars: CharStream): Lexer;
-	// (undocumented)
-	literalNames: (string | null)[];
-	// (undocumented)
-	ruleNames: string[];
-	// (undocumented)
-	symbolicNames: (string | null)[];
+    // (undocumented)
+    new (chars: CharStream): Lexer;
+    // (undocumented)
+    literalNames: (string | null)[];
+    // (undocumented)
+    ruleNames: string[];
+    // (undocumented)
+    symbolicNames: (string | null)[];
 }
 
 // @public
 export interface IMonacoEditorUIConfig {
-	height?: number | string;
-	// Warning: (ae-forgotten-export) The symbol "IEditorConstructionOptions" needs to be exported by the entry point index.d.ts
-	options?: IEditorConstructionOptions;
-	width?: number | string;
+    height?: number | string;
+    // Warning: (ae-forgotten-export) The symbol "IEditorConstructionOptions" needs to be exported by the entry point index.d.ts
+    options?: IEditorConstructionOptions;
+    width?: number | string;
 }
 
 // @public
@@ -191,10 +192,10 @@ export const initMonaco: (monacoLoaderProps?: IMonacoLoaderProps) => Promise<voi
 
 // @public (undocumented)
 export interface IParserConstructor {
-	// (undocumented)
-	new (chars: CommonTokenStream): Parser;
-	// (undocumented)
-	ruleNames: string[];
+    // (undocumented)
+    new (chars: CommonTokenStream): Parser;
+    // (undocumented)
+    ruleNames: string[];
 }
 
 // @public
@@ -202,26 +203,26 @@ export type IStandaloneThemeData = monaco.editor.IStandaloneThemeData;
 
 // @public
 export interface ISuggestion {
-	// (undocumented)
-	text: string;
+    // (undocumented)
+    text: string;
 }
 
 // @public
 export interface ITokenForAsyncContextAssist {
-	column: number;
-	lineNumber: number;
-	start: number;
-	stop: number;
-	text: string;
-	type: number;
-	typeName: string;
+    column: number;
+    lineNumber: number;
+    start: number;
+    stop: number;
+    text: string;
+    type: number;
+    typeName: string;
 }
 
 // @public (undocumented)
 export interface IValidationState {
-	owner: string;
-	status: ValidationStatus;
-	validationType: ValidationType;
+    owner: string;
+    status: ValidationStatus;
+    validationType: ValidationType;
 }
 
 // @public
@@ -229,33 +230,33 @@ export type LanguageConfiguration = monaco.languages.LanguageConfiguration;
 
 // @public (undocumented)
 export class ValidationError {
-	constructor(startLine: number, startCol: number, endLine: number, endCol: number, message: string);
-	// (undocumented)
-	endCol: number;
-	// (undocumented)
-	endLine: number;
-	// (undocumented)
-	message: string;
-	// (undocumented)
-	startCol: number;
-	// (undocumented)
-	startLine: number;
+    constructor(startLine: number, startCol: number, endLine: number, endCol: number, message: string);
+    // (undocumented)
+    endCol: number;
+    // (undocumented)
+    endLine: number;
+    // (undocumented)
+    message: string;
+    // (undocumented)
+    startCol: number;
+    // (undocumented)
+    startLine: number;
 }
 
 // @public (undocumented)
 export enum ValidationStatus {
-	// (undocumented)
-	CHECKING = "checking",
-	// (undocumented)
-	DONE = "done"
+    // (undocumented)
+    CHECKING = "checking",
+    // (undocumented)
+    DONE = "done"
 }
 
 // @public (undocumented)
 export enum ValidationType {
-	// (undocumented)
-	EXTERNAL = "external",
-	// (undocumented)
-	GRAMMAR = "grammar"
+    // (undocumented)
+    EXTERNAL = "external",
+    // (undocumented)
+    GRAMMAR = "grammar"
 }
 
 // (No @packageDocumentation comment for this package)

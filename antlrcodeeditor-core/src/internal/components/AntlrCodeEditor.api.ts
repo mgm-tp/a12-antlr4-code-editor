@@ -67,6 +67,20 @@ export interface IMonacoLoaderProps {
  */
 export interface IAntlrCodeEditorProps {
 	/**
+	 * Identifier for this code editor.
+	 *
+	 * Monaco renders the textarea that actually receives keyboard focus and input without an id
+	 * of its own. Host frameworks that focus a field by looking up its input element by id (for
+	 * example the A12 Form Engine, when navigating to a validation issue) therefore cannot find
+	 * it, and end up focusing a surrounding container instead - leaving the editor without a
+	 * visible cursor and without keyboard input.
+	 *
+	 * When set, that textarea is given the id `${id}-monaco-editor`, so such a lookup resolves
+	 * to the editor's real input.
+	 */
+	id?: string;
+
+	/**
 	 * UI configuration for monaco editor
 	 */
 	uiConfig?: IMonacoEditorUIConfig;

@@ -7,6 +7,14 @@
 - [CodeEditor] = Changes in the Antlr code editor
 - [Dev] = General changes in the dev environment
 
+## [7.1.0 / 2026-10-27]
+### Changed
+* Add `id` property in the editor to allow Form Engine to focus correctly to editor when having error
+* Support version range for monaco-editor in peerDependencies 
+
+### Bug fixes
+* Fix infinite loop when clicking to Go To Issue button in Form Engine
+
 ## [7.0.1 / 2026-08-17]
 ### Changed
 * Fix security issues in 3rd dependencies

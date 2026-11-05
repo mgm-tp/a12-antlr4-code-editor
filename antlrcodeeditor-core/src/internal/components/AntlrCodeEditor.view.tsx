@@ -61,6 +61,12 @@ interface IAntlrCodeEditorState {
 const DELAY_TIME_FETCHING_EXTERNAL_ERRORS = 1000;
 
 /**
+ * Suffix appended to the `id` prop to build the id of the editor's underlying textarea,
+ * which is the element that actually receives keyboard focus and input.
+ */
+const MONACO_INPUT_ID_SUFFIX = "-monaco-editor-textarea";
+
+/**
  * The basic Code Editor component
  */
 export class AntlrCodeEditor extends Component<
@@ -137,8 +143,17 @@ export class AntlrCodeEditor extends Component<
 			customCompletionProvider,
 			markExternalErrorsRef,
 			onFocus,
-			endOfLinePreference
+			endOfLinePreference,
+			id
 		} = this.props;
+
+		if (id) {
+			editor
+				.getDomNode()
+				?.querySelector("textarea.inputarea")
+				?.setAttribute("id", `${id}${MONACO_INPUT_ID_SUFFIX}`);
+		}
+
 		if (fetchExternalErrors) {
 			setupEditor(editor, tokensProvider, onFocus, this.timerIds, fetchExternalErrors, delayFetchExternalErrors);
 			// force Monaco editor to validate external error right after mounting
